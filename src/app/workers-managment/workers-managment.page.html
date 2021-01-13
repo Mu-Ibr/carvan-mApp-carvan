@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>workersManagment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-button id='shiftManagment' expand="block" [routerLink]="['/shift-managment']">ניהול משמרת</ion-button>
+    <ion-list>
+      <ion-item *ngFor="let worker of workers">
+        <ion-avatar slot = "start">
+          <ion-img [src]="worker.imageUrl"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          {{ worker.name }}{{ worker.type }}
+          </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
