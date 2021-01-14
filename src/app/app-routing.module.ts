@@ -35,6 +35,22 @@ const routes: Routes = [
     path: 'worker-profile',
     loadChildren: () => import('./worker-profile/worker-profile.module').then( m => m.WorkerProfilePageModule)
   },
+  {
+    path: 'budget-managment',
+    loadChildren: () => import('./budget-managment/budget-managment.module').then( m => m.BudgetManagmentPageModule)
+  },
+  {
+    path: 'cash-flow',
+    loadChildren: () => import('./cash-flow/cash-flow.module').then( m => m.CashFlowPageModule)
+  },
+  {
+    path: 'expenses',
+    loadChildren: () => import('./expenses/expenses.module').then( m => m.ExpensesPageModule)
+  },
+  {
+    path: 'sales-report',
+    loadChildren: () => import('./sales-report/sales-report.module').then( m => m.SalesReportPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SalesReport</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h5>דוח מכירות</h5>
+  <ion-item>
+    <ion-label>בחר</ion-label>
+    <ion-select>
+      <ion-select-option value="daily">יומי</ion-select-option>
+      <ion-select-option value="weekly">שבועי</ion-select-option>
+      <ion-select-option value="monthly">חודשי</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <h5>Sales Total:</h5>
+  <h5>Average spend per person:</h5>
+  <h3>Customers:</h3>
+  <h5>Parties:</h5>
+  <h5>Bills:</h5>
+  <h5>Seats:</h5>
+  <div class="ion-padding">
+    <ion-card>
+      <ion-card-header>
+        Doughnut Chart
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #doughnutCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+    </div>
+</ion-content>
