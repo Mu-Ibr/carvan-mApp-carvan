@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>workersManagment</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>ניהול עובדים</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,8 +16,13 @@
           <ion-img [src]="worker.imageUrl"></ion-img>
         </ion-avatar>
         <ion-label>
-          {{ worker.name }}{{ worker.type }}
-          </ion-label>
+          שם: {{ worker.name }} עובד: {{ worker.type }}
+          <ion-buttons slot="primary">
+            <ion-button>
+            <ion-icon name="trash" slot="icon-only"></ion-icon>
+          </ion-button>
+          </ion-buttons>
+        </ion-label>
       </ion-item>
     </ion-list>
     <ion-button id='addWorkerList'>הוספת עובד</ion-button>

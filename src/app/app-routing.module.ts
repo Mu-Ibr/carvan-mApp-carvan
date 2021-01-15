@@ -24,20 +24,16 @@ const routes: Routes = [
     loadChildren: () => import('./financial-managment/financial-managment.module').then( m => m.FinancialManagmentPageModule)
   },
   {
+    path: 'budget-managment',
+    loadChildren: () => import('./budget-managment/budget-managment.module').then( m => m.BudgetManagmentPageModule)
+  },
+  {
     path: 'inventory-managment',
     loadChildren: () => import('./inventory-managment/inventory-managment.module').then( m => m.InventoryManagmentPageModule)
   },
   {
     path: 'shift-managment',
     loadChildren: () => import('./shift-managment/shift-managment.module').then( m => m.ShiftManagmentPageModule)
-  },
-  {
-    path: 'worker-profile',
-    loadChildren: () => import('./worker-profile/worker-profile.module').then( m => m.WorkerProfilePageModule)
-  },
-  {
-    path: 'budget-managment',
-    loadChildren: () => import('./budget-managment/budget-managment.module').then( m => m.BudgetManagmentPageModule)
   },
   {
     path: 'cash-flow',

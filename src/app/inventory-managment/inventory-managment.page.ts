@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InventoryService } from '../inventory.service';
+import { Inventory } from '../inventory.model';
 
 @Component({
   selector: 'app-inventory-managment',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inventory-managment.page.scss'],
 })
 export class InventoryManagmentPage implements OnInit {
-
-  constructor() { }
+  inventories: Inventory[];
+  constructor(private inventoryService: InventoryService) { }
 
   ngOnInit() {
+    this.inventories = this.inventoryService.getAllInventory();
   }
 
 }

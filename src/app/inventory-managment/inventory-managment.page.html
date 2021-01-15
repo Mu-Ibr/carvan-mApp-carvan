@@ -1,11 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>inventoryManagment</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>ניהול מלאי</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
+    <ion-item *ngFor="let inventory of inventories">
+        <ion-label> {{inventory.itemName}} {{inventory.amount}} {{inventory.total}}שקלים</ion-label>
+    </ion-item>
   </ion-list>
   <ion-button id='addNewItemList'>הוסף פריט</ion-button>
   <ion-button id='okBut'>אשר</ion-button>
