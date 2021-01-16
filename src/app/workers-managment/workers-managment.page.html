@@ -12,7 +12,8 @@
   <ion-button id='shiftManagment' expand="block" [routerLink]="['/shift-managment']">ניהול משמרת</ion-button>
   <div>
     <ion-list>
-      <ion-item *ngFor="let worker of workers">
+      <ion-item-sliding *ngFor="let worker of workers">
+        <ion-item>
         <ion-thumbnail slot = "start">
           <ion-img [src]="worker.imageUrl"></ion-img>
         </ion-thumbnail>
@@ -20,8 +21,13 @@
           <h2>שם: {{ worker.name }}</h2>
           <h2>עובד: {{ worker.type }}</h2>
         </ion-label>
-        <button danger (click)="removeWorker(worker)"><ion-icon name="person-remove-outline"></ion-icon></button>
       </ion-item>
+      <ion-item-options>
+        <ion-item-option (click)="removeWorker(worker)">
+          <ion-icon name="person-remove-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      </ion-item-sliding>
     </ion-list>
     <ion-button id='addWorkerList' (click)="addNewWorker()"><ion-icon name="person-add-outline"></ion-icon>הוספת עובד</ion-button>
   </div>

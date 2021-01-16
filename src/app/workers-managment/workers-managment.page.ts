@@ -4,6 +4,7 @@ import {Worker} from '../Worker.model'
 import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-workers-managment',
   templateUrl: './workers-managment.page.html',
@@ -16,12 +17,13 @@ export class WorkersManagmentPage implements OnInit {
   constructor(
     private workerService: WorkersService,
     private activatedRoute: ActivatedRoute,
-    private alertController: AlertController
+    private alertController: AlertController,
     ) { }
 
   ngOnInit() {
     this.workers = this.workerService.workers;
   }
+  
   async addNewWorker() {
     const alert = await this.alertController.create({
       header: 'הוסף עובד',

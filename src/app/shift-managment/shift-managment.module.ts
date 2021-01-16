@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -8,13 +9,17 @@ import { ShiftManagmentPageRoutingModule } from './shift-managment-routing.modul
 
 import { ShiftManagmentPage } from './shift-managment.page';
 
+import { CalendarModule } from 'ion2-calendar';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ShiftManagmentPageRoutingModule
+    ShiftManagmentPageRoutingModule,
+    CalendarModule
   ],
-  declarations: [ShiftManagmentPage]
+  declarations: [ShiftManagmentPage],
+  providers: [{ provide: LOCALE_ID, useValue: 'zh-CN' }]
 })
 export class ShiftManagmentPageModule {}

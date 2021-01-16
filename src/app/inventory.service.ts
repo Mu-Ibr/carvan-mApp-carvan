@@ -5,7 +5,18 @@ import { Inventory } from './inventory.model'
   providedIn: 'root'
 })
 export class InventoryService {
-  inventories: Inventory[]=[]
+  inventories: Inventory[]=[
+    {
+      itemName: 'Hummus',
+      amount: 20,
+      total: 600
+    }, 
+    {
+      itemName: 'Coca-Cola',
+      amount: 10,
+      total: 300
+    }
+  ]
 
   constructor() { }
   
