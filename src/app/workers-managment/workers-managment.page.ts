@@ -10,15 +10,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class WorkersManagmentPage implements OnInit {
   workers: Worker[];
-  worker: Worker;
+  loadedWorker: Worker;
+
   constructor(
     private workerService: WorkersService,
     private activatedRoute: ActivatedRoute
     ) { }
 
   ngOnInit() {
-    this.workers = this.workerService.getAllWorkers();
+    this.workers = this.workerService.workers;
   }
-
-
+  
+  addNewWorker(){
+    this.workers.push(new Worker("id","name","image","type"));
+  }
 }

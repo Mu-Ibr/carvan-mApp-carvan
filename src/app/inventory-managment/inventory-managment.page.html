@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>ניהול מלאי</ion-title>
@@ -13,6 +14,6 @@
         <ion-label> {{inventory.itemName}} {{inventory.amount}} {{inventory.total}}שקלים</ion-label>
     </ion-item>
   </ion-list>
-  <ion-button id='addNewItemList'>הוסף פריט</ion-button>
+  <ion-button id='addNewItemList' (click)="addNewItem()">הוסף פריט</ion-button>
   <ion-button id='okBut'>אשר</ion-button>
 </ion-content>

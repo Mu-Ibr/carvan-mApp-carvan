@@ -1,5 +1,7 @@
-export interface Inventory{
-    itemName: string;
-    amount: number;
-    total: number;
+export class Inventory{
+    constructor(
+    public itemName: string,
+    public amount: number,
+    public total: number
+    ){}
 }

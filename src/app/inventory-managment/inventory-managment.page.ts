@@ -15,4 +15,7 @@ export class InventoryManagmentPage implements OnInit {
     this.inventories = this.inventoryService.getAllInventory();
   }
 
+  addNewItem(){
+    this.inventories.push(new Inventory("item",0,0));
+  }
 }
