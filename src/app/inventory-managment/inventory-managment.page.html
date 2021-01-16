@@ -11,9 +11,9 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let inventory of inventories">
-        <ion-label> {{inventory.itemName}} {{inventory.amount}} {{inventory.total}}שקלים</ion-label>
+        <ion-label> {{inventory.itemName}} {{inventory.amount}} {{inventory.total}} ₪</ion-label>
+        <button danger (click)="removeItem(inventory)"><ion-icon name="close-outline"></ion-icon></button>
     </ion-item>
   </ion-list>
-  <ion-button id='addNewItemList' (click)="addNewItem()">הוסף פריט</ion-button>
-  <ion-button id='okBut'>אשר</ion-button>
+  <ion-button id='addNewItemList' (click)="addNewItem()"><ion-icon name="add-circle-outline"></ion-icon>הוסף פריט</ion-button>
 </ion-content>
