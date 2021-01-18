@@ -47,6 +47,18 @@ const routes: Routes = [
     path: 'sales-report',
     loadChildren: () => import('./sales-report/sales-report.module').then( m => m.SalesReportPageModule)
   },
+  {
+    path: 'waiter',
+    loadChildren: () => import('./waiter/waiter.module').then( m => m.WaiterPageModule)
+  },
+  {
+    path: 'order-waiter',
+    loadChildren: () => import('./order-waiter/order-waiter.module').then( m => m.OrderWaiterPageModule)
+  },
+  {
+    path: 'kitchen',
+    loadChildren: () => import('./kitchen/kitchen.module').then( m => m.KitchenPageModule)
+  },
 ];
 
 @NgModule({
