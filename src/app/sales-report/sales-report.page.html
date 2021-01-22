@@ -9,8 +9,7 @@
 </ion-header>
 
 <ion-content>
-  <h5>דוח מכירות</h5>
-  <ion-item>
+  <ion-item id="ionsel">
     <ion-label>בחר</ion-label>
     <ion-select>
       <ion-select-option value="daily">יומי</ion-select-option>
@@ -18,16 +17,18 @@
       <ion-select-option value="monthly">חודשי</ion-select-option>
     </ion-select>
   </ion-item>
-  <h5>Sales Total: 0</h5>
-  <h5>Average spend per person: 0</h5>
-  <h3>Customers:</h3>
-  <h5>Parties: 0</h5>
-  <h5>Bills: 0</h5>
-  <h5>Seats: 0</h5>
+  <div id='info'>
+  <h3>על המכירות</h3>
+  <h5>סה"כ מכירות בשקלים:</h5>
+  <h5>ממוצע ההוצאה לאדם:</h5>
+  <h3>על הלקוחות</h3>
+  <h5>סה"כ מספר לקוחות (שולחן):</h5>
+  <h5>סה"כ מספר לקוחות (אדם):</h5>
+  </div>
   <div class="ion-padding">
     <ion-card>
-      <ion-card-header>
-        דוח מכירות 
+      <ion-card-header id='ioncardheader'>
+      הנמכרים 
       </ion-card-header>
       <ion-card-content>
         <canvas #barChart></canvas>

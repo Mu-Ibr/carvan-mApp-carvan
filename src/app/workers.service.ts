@@ -8,9 +8,9 @@ export class WorkersService {
   private _workers: Worker[] = [
     {
       id:'r1',
-      name: 'Muhammad Ibrahim',
+      name: 'מוחמד איברהים',
       imageUrl: 'https://avatars0.githubusercontent.com/u/35499309?s=400&u=2a9f6da2bf22666f2b60ec781c5d02c70beb2213&v=4',
-      type: 'Manager'
+      type: 'מנהל'
     }
   ]
 

@@ -9,8 +9,22 @@
 </ion-header>
 
 <ion-content>
-  <ion-button id='budgetManBut' expand="block" [routerLink]="['/budget-managment']">ניהול תקציב</ion-button>
-  <ion-button id='cashFlowBut' expand="block" [routerLink]="['/cash-flow']">תזרים מזומנים</ion-button>
-  <ion-button id='expensesBut' expand="block" [routerLink]="['/expenses']">הוצאות</ion-button>
-  <ion-button id='salesReportBut' expand="block" [routerLink]="['/sales-report']">דוח מכירות</ion-button>
+  <div>
+  <ion-button id='budgetManBut' expand="block" [routerLink]="['/budget-managment']">
+    <ion-icon name="calculator-sharp" slot="end"></ion-icon>  
+     ניהול תקציב
+  </ion-button>
+  <ion-button id='cashFlowBut' expand="block" [routerLink]="['/cash-flow']">
+    <ion-icon name="bar-chart-sharp" slot="end"></ion-icon>
+     תזרים מזומנים
+  </ion-button>
+  <ion-button id='expensesBut' expand="block" [routerLink]="['/expenses']">
+    <ion-icon name="wallet-sharp" slot="end"></ion-icon>
+      הוצאות
+  </ion-button>
+  <ion-button id='salesReportBut' expand="block" [routerLink]="['/sales-report']">
+    <ion-icon name="file-tray-full-sharp" slot="end"></ion-icon> 
+       דוח מכירות
+  </ion-button>
+  </div>
 </ion-content>

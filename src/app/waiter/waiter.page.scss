@@ -6,13 +6,19 @@
 }
 
 #tables{
-
-    margin: auto;
+    margin-top: 40px;
     width: 100%;
-    padding: 15px;
+    padding: 20px;
   }
 
+#headers{
+    border-bottom: 3px solid #bbb;
+}
 h3{
+    padding-top: 20px;
     text-align: center;
+    font-size: large;
+    font-weight: bold;
+    font-style:italic;
 }
 

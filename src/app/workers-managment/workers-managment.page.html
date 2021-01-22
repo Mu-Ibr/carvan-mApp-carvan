@@ -9,9 +9,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-button id='shiftManagment' expand="block" [routerLink]="['/shift-managment']">ניהול משמרת</ion-button>
+  <ion-button id='shiftManagment' [routerLink]="['/shift-managment']">ניהול משמרת</ion-button>
   <div>
     <ion-list>
+      <h3>עובדים</h3>
       <ion-item-sliding *ngFor="let worker of workers">
         <ion-item>
         <ion-thumbnail slot = "start">
