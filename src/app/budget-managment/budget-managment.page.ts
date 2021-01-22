@@ -23,7 +23,7 @@ export class BudgetManagmentPage implements OnInit {
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'pie',
       data: {
-        labels: ['S1', 'S2', 'S3', 'S4'],
+        labels: ['אלכוהול', 'בשרים', 'חשמל', 'מים'],
         datasets: [{
           label: '',
           data: [2.5, 3.8, 5, 6.9],
@@ -43,17 +43,16 @@ export class BudgetManagmentPage implements OnInit {
       }
     });
   }
-
-  generateColorArray(num) {
-    this.colorArray = [];
-    for (let i = 0; i < num; i++) {
-      this.colorArray.push('#' + Math.floor(Math.random() * 16777215).toString(16));
-    }
+  
+generateColorArray() {
+  this.colorArray = [];
+  for (let i = 0; i < 4; i++) {
+    this.colorArray.push('#' + Math.floor(Math.random() * 16777215).toString(16));
   }
+}
 
   ngOnInit() {
   }
 
-  
+} 
 
-}

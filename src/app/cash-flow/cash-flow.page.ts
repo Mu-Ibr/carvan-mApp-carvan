@@ -13,7 +13,6 @@ export class CashFlowPage implements OnInit {
   @ViewChild('barChart') barChart;
 
   bars: any;
-  colorArray: any;
   constructor() { }
 
   ionViewDidEnter() {
@@ -24,10 +23,10 @@ export class CashFlowPage implements OnInit {
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['S1', 'S2', 'S3', 'S4'],
+        labels: ['ינואר', 'דצמבר', 'נובמבר', 'אקטובר'],
         datasets: [{
-          label: '',
-          data: [2.5, 3.8, 5, 6.9],
+          label: 'תזרים מזומנים ל3 החודשים האחרונים',
+          data: [1, 6, 4, 9],
           backgroundColor: 'rgb(38, 194, 129)', 
           borderColor: 'rgb(38, 194, 129)',
           borderWidth: 1
@@ -43,13 +42,6 @@ export class CashFlowPage implements OnInit {
         }
       }
     });
-  }
-
-  generateColorArray(num) {
-    this.colorArray = [];
-    for (let i = 0; i < num; i++) {
-      this.colorArray.push('#' + Math.floor(Math.random() * 16777215).toString(16));
-    }
   }
 
   ngOnInit() {

@@ -25,7 +25,6 @@ export class SalesReportPage implements OnInit {
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'pie',
       data: {
-        labels: ['S1', 'S2', 'S3', 'S4'],
         datasets: [{
           label: '',
           data: [2.5, 3.8, 5, 6.9],
