@@ -18,6 +18,7 @@ export class OrderWaiterPage implements OnInit {
   ngOnInit() {
   }  
 
-  showMenu(menu){
+  showMenu(menu: string){
+    console.log(menu);
   }
 }
