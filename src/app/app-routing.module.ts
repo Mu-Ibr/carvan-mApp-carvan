@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { OrderWaiterPage } from './waiter/order-waiter/order-waiter.page';
 
 const routes: Routes = [
    {
@@ -53,7 +54,7 @@ const routes: Routes = [
   },
   {
     path: 'order-waiter',
-    loadChildren: () => import('./order-waiter/order-waiter.module').then( m => m.OrderWaiterPageModule)
+    loadChildren: () => import('./waiter/order-waiter/order-waiter.module').then( m => m.OrderWaiterPageModule)
   },
   {
     path: 'kitchen',

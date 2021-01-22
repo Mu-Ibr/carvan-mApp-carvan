@@ -17,4 +17,5 @@ import { OrderWaiterPage } from './order-waiter.page';
   ],
   declarations: [OrderWaiterPage]
 })
+
 export class OrderWaiterPageModule {}

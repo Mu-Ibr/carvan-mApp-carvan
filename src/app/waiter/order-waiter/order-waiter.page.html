@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>הזמנות</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs #myTabs>
+    <ion-tab-bar slot = 'top'>
+      <ion-tab-button tab="appetizers" (click)="showMenu(appetizers)">
+        <ion-label>מנות ראשונות</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="soups" (click)="showMenu(soups)">
+        <ion-label>מרקים</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="stuffed" (click)="showMenu(stuffed)">
+        <ion-label>ממולאים</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="mainMeal" (click)="showMenu(mainMeal)">
+        <ion-label>מנות עיקריות</ion-label>
+      </ion-tab-button>
+    <ion-tab-button tab="drinks" (click)="showMenu(drinks)">
+      <ion-label>משקאות</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="desserts" (click)="showMenu(desserts)">
+      <ion-label>קינוחים</ion-label>
+    </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

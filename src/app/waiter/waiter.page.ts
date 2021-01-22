@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Table } from '../Table.model';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-waiter',
@@ -8,10 +10,15 @@ import { Table } from '../Table.model';
 })
 export class WaiterPage implements OnInit {
 
-  private tables: Table[];
-  constructor() { }
+  constructor(private router: Router, public navCtrl: NavController) { }
 
-  ngOnInit() {
+  table: Table;
+
+  ngOnInit() { }
+
+  SelectClicked(tableNum){
+    this.table = new Table(tableNum,"waiter");
+    this.router.navigate(['/order-waiter']);
   }
 
 }
