@@ -13,4 +13,14 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  login(name:string){
+    if(name === "manager")
+    this.router.navigate(['/manager-menu']);
+    if(name === "waiter")
+    this.router.navigate(['/waiter']);
+    if(name === "kitchen")
+    this.router.navigate(['/kitchen']);
+
+  }
+
 }

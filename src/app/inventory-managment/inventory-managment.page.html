@@ -12,7 +12,17 @@
   <ion-list>
     <ion-item-sliding *ngFor="let inventory of inventories">
       <ion-item>
-        <ion-label> שם הפריט: {{inventory.itemName}} כמות: {{inventory.amount}} עלות: {{inventory.total}} ₪</ion-label>
+        <ion-label> 
+          <div class="column">
+          <h5>שם הפריט: {{inventory.itemName}}</h5>
+          </div>
+          <div class="column">
+          <h5>כמות: {{inventory.amount}}</h5>
+          </div>
+           <div class="column">
+           <h5>עלות: {{inventory.total}}</h5>
+          </div>
+          </ion-label>
     </ion-item>
     <ion-item-options>
       <ion-item-option (click)="removeItem(inventory)"><ion-icon name="close-outline"></ion-icon>

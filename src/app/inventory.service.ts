@@ -6,16 +6,6 @@ import { Inventory } from './inventory.model'
 })
 export class InventoryService {
   inventories: Inventory[]=[
-    {
-      itemName: 'Hummus',
-      amount: 20,
-      total: 600
-    }, 
-    {
-      itemName: 'Coca-Cola',
-      amount: 10,
-      total: 300
-    }
   ]
 
   constructor() { }
