@@ -1,0 +1,14 @@
+<ion-content>
+  <div>
+      <ion-list>
+        <ion-item-sliding *ngFor="let dessert of desserts">
+          <ion-item>
+          <ion-label>
+            <h5>{{ dessert.name }}</h5>
+            <h6>{{ dessert.price }}</h6>
+          </ion-label>
+          </ion-item>
+          </ion-item-sliding>
+      </ion-list>
+  </div>
+</ion-content>

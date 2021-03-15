@@ -10,22 +10,22 @@
 <ion-content>
   <ion-tabs #myTabs>
     <ion-tab-bar slot = 'top'>
-      <ion-tab-button tab="appetizers" (click)="showMenu(appetizers)">
+      <ion-tab-button tab="appetizers" routerLink="/waiter/order-waiter/appetizers">
         <ion-label>מנות ראשונות</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="soupd" (click)="showMenu(soups)">
+      <ion-tab-button tab="soupd" routerLink="/waiter/order-waiter/soupd">
         <ion-label>מרקים</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="stuffed" (click)="showMenu(stuffed)">
+      <ion-tab-button tab="stuffed" routerLink="/waiter/order-waiter/stuffed">
         <ion-label>ממולאים</ion-label>
       </ion-tab-button>
-      <ion-tab-button tab="mainMeal" (click)="showMenu(mainMeal)">
+      <ion-tab-button tab="mainMeal" routerLink="/waiter/order-waiter/main-meal">
         <ion-label>מנות עיקריות</ion-label>
       </ion-tab-button>
-    <ion-tab-button tab="drinks" (click)="showMenu(drinks)">
+    <ion-tab-button tab="drinks" routerLink="/waiter/order-waiter/drinks">
       <ion-label>משקאות</ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="desserts" (click)="showMenu(desserts)">
+    <ion-tab-button tab="desserts" routerLink="/waiter/order-waiter/desserts">
       <ion-label>קינוחים</ion-label>
     </ion-tab-button>
     </ion-tab-bar>
