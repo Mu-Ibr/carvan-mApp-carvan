@@ -5,6 +5,11 @@ import { OrderWaiterPage } from './order-waiter.page';
 
 const routes: Routes = [
   {
+    path:'',
+    redirectTo:'/order-waiter/tabs/appetizers',
+    pathMatch: 'full'
+  },
+  {
     path: 'tabs',
     component: OrderWaiterPage,
     children: [
@@ -63,11 +68,6 @@ const routes: Routes = [
     },
     ]
   },
-  {
-    path:'',
-    redirectTo:'/order-waiter/tabs/appetizers',
-    pathMatch: 'full'
-  }
 ];
 
 @NgModule({
