@@ -7,7 +7,7 @@ import { Table } from './Table.model';
 })
 export class OrderService {
 
-  private order: Order[];
+  private order: Order[] = [];
 
   constructor() { }
   
