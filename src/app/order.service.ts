@@ -8,11 +8,21 @@ import { Table } from './Table.model';
 export class OrderService {
 
   private order: Order[] = [];
+  totalSumOfOrders: number;
 
   constructor() { }
   
   addOrder(table:Table, totalSum:number, items:string[]){
     this.order.push(new Order(table,totalSum,items));
+    this.sumofOrders(totalSum);
+  }
+
+  getTotalSumOfOrders(){
+    return this.totalSumOfOrders;
+  }
+
+  private sumofOrders(totalSum: number){
+    this.totalSumOfOrders+=totalSum;
   }
 
   getOrders(){
