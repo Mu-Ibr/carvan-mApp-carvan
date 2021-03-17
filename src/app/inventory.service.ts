@@ -7,27 +7,27 @@ import { Inventory } from './inventory.model'
 export class InventoryService {
   inventories: Inventory[]=[]
   sumOfAll: number;
+  summ: number;
 
-  constructor() { }
+  constructor() {
+    this.sumOfAll=0;
+    this.summ=0;
+   }
   
-  getSumOfAll(){
+  getSumofAll(){
     return this.sumOfAll;
   }
 
+  addSum(amount){
+    this.sumOfAll = this.sumOfAll + amount;
+  }
+
+  removeSum(amount){
+    this.sumOfAll = this.sumOfAll - amount;
+  }
+  
   getAllInventory(){
     return [...this.inventories];
   }
 
-  amount(item){
-    return item.amount;
-  }
-  
-  sum(prev, next){
-    return prev + next;
-  }
-
-  totalSumInventory(){
-    this.inventories.map(this.amount).reduce(this.sum);
-    this.sumOfAll = this.inventories.map(item => item.amount).reduce((prev, next) => prev + next);
-  }
 }
