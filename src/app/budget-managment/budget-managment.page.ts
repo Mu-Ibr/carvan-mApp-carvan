@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { ViewChild } from '@angular/core';
 import { InventoryService } from '../inventory.service';
+import { ExpensesService } from '../expenses.service';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class BudgetManagmentPage implements OnInit {
   income: number;
   total: number;
 
-  constructor(private inventory: InventoryService) { }
+  constructor(private inventory: InventoryService,
+    private expenseservice: ExpensesService) { }
 
   ionViewDidEnter() {
     this.createBarChart();
@@ -59,10 +61,17 @@ generateColorArray() {
 }
 
   ngOnInit() {
-   // this.expenses = this.inventory.getSumOfAll();
-    this.expenses = 0;
-    this.income = 0;
+    this.expenseSum();
+    this.incomeSum();
     this.total = this.income - this.expenses;
+  }
+
+  expenseSum(){
+    this.expenses = (this.expenseservice.getSumofAll()) + (this.inventory.getSumofAll());
+  }
+
+  incomeSum(){
+    this.income = 0;
   }
 
 } 

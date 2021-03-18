@@ -58,6 +58,7 @@ export class InventoryManagmentPage implements OnInit {
           text: 'אשר',
           handler: data=>{
             this.inventories.push(new Inventory(data.itemName, data.amount, data.total));
+            this.inventoryService.inventories.push(new Inventory(data.itemName, data.amount, data.total));
             this.inventoryService.addSum(parseInt(data.total));
             this.sumExpenses();        
           }
@@ -72,6 +73,7 @@ export class InventoryManagmentPage implements OnInit {
     if(index > -1){
       this.inventoryService.removeSum(item.total);
       this.inventories.splice(index, 1);
+      this.inventoryService.inventories.splice(index, 1);
     }
     this.sum = this.inventoryService.getSumofAll();
   }

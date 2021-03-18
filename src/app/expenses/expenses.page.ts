@@ -60,6 +60,7 @@ export class ExpensesPage implements OnInit {
           text: 'אשר',
           handler: data=>{
             this.expenses.push(new Expense(data.nameFor, data.amount, data.dueDate));
+            this.exepnseService.expensesArr.push(new Expense(data.nameFor, data.amount, data.dueDate));
             this.exepnseService.addSum(parseInt(data.amount));
             this.sumExpenses();
           }
@@ -74,6 +75,7 @@ export class ExpensesPage implements OnInit {
     if(index > -1){
       this.exepnseService.removeSum(item.amount);
       this.expenses.splice(index, 1);
+      this.exepnseService.expensesArr.splice(index, 1);
     }
     this.sum = this.exepnseService.getSumofAll();
   }
