@@ -3,6 +3,7 @@ import { Chart } from 'chart.js';
 import { ViewChild } from '@angular/core';
 import { InventoryService } from '../inventory.service';
 import { ExpensesService } from '../expenses.service';
+import { OrderService } from '../order.service';
 
 
 @Component({
@@ -13,22 +14,25 @@ import { ExpensesService } from '../expenses.service';
 export class BudgetManagmentPage implements OnInit {
 
   @ViewChild('barChart') barChart;
+  @ViewChild('barChart2') barChart2;
 
   bars: any;
-  colorArray: any;
-
+  bars2: any;
   expenses: number;
   income: number;
   total: number;
 
-  constructor(private inventory: InventoryService,
-    private expenseservice: ExpensesService) { }
+  constructor(
+    private inventory: InventoryService,
+    private expenseservice: ExpensesService,
+    private orderIncome: OrderService) { }
 
   ionViewDidEnter() {
-    this.createBarChart();
+    this.createBarChartExpense();
+    this.createBarChartIncome();
   }
 
-  createBarChart() {
+  createBarChartExpense() {
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'pie',
       data: {
@@ -36,8 +40,8 @@ export class BudgetManagmentPage implements OnInit {
         datasets: [{
           label: '',
           data: [2.5, 3.8, 5, 6.9],
-          backgroundColor: 'rgb(38, 194, 129)', 
-          borderColor: 'rgb(38, 194, 129)',
+          backgroundColor: ['white','blue','green','black'], 
+          borderColor: 'red',
           borderWidth: 1
         }]
       },
@@ -53,12 +57,30 @@ export class BudgetManagmentPage implements OnInit {
     });
   }
   
-generateColorArray() {
-  this.colorArray = [];
-  for (let i = 0; i < 4; i++) {
-    this.colorArray.push('#' + Math.floor(Math.random() * 16777215).toString(16));
+  createBarChartIncome() {
+    this.bars2 = new Chart(this.barChart2.nativeElement, {
+      type: 'pie',
+      data: {
+        labels: ['אלכוהול', 'בשרים', 'סלטים'],
+        datasets: [{
+          label: '',
+          data: [2.5, 3.8, 6.9],
+          backgroundColor: ['blue','green','black'], 
+          borderColor: 'red',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
   }
-}
 
   ngOnInit() {
     this.expenseSum();
@@ -71,7 +93,7 @@ generateColorArray() {
   }
 
   incomeSum(){
-    this.income = 0;
+    this.income = this.orderIncome.getTotalIncomeOfOrders();
   }
 
 } 

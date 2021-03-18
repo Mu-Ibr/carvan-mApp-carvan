@@ -4,5 +4,6 @@ export class Expense{
         public nameFor: string,
         public amount: number,
         public dueDate: Date,
+        public type: string,
     ){}
 }

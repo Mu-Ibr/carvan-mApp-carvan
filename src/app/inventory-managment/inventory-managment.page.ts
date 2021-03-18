@@ -11,7 +11,6 @@ import { AlertController } from '@ionic/angular';
 export class InventoryManagmentPage implements OnInit {
   inventories: Inventory[];
   sum: number;
-  sumOfAll: number;
   constructor(
     private inventoryService: InventoryService,
     private alertController: AlertController
@@ -19,8 +18,7 @@ export class InventoryManagmentPage implements OnInit {
 
   ngOnInit() {
     this.inventories = this.inventoryService.getAllInventory();
-    this.sum = 0;
-    this.sumOfAll = 0;
+    this.sum = this.inventoryService.getSumofAll();
   }
 
   async addNewItem() {
@@ -57,6 +55,10 @@ export class InventoryManagmentPage implements OnInit {
         }, {
           text: 'אשר',
           handler: data=>{
+            if(!data.total)
+              data.total = 0;
+            if(!data.amount)
+              data.amount = 0;
             this.inventories.push(new Inventory(data.itemName, data.amount, data.total));
             this.inventoryService.inventories.push(new Inventory(data.itemName, data.amount, data.total));
             this.inventoryService.addSum(parseInt(data.total));

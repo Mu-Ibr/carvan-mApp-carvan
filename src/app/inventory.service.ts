@@ -7,11 +7,9 @@ import { Inventory } from './inventory.model'
 export class InventoryService {
   inventories: Inventory[]=[]
   sumOfAll: number;
-  summ: number;
 
   constructor() {
     this.sumOfAll=0;
-    this.summ=0;
    }
   
   getSumofAll(){

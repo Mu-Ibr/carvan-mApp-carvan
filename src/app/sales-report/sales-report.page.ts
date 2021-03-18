@@ -14,7 +14,6 @@ export class SalesReportPage implements OnInit {
   @ViewChild('barChart') barChart;
 
   bars: any;
-  colorArray: any;
   constructor() { }
 
   ionViewDidEnter() {
@@ -25,11 +24,12 @@ export class SalesReportPage implements OnInit {
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'pie',
       data: {
+        labels: ['קינוחים','סלטים','טייקאוי','בשרים'],
         datasets: [{
           label: '',
           data: [2.5, 3.8, 5, 6.9],
-          backgroundColor: 'rgb(38, 194, 129)', 
-          borderColor: 'rgb(38, 194, 129)',
+          backgroundColor: ['grey','blue','orange','green'], 
+          borderColor: 'white',
           borderWidth: 1
         }]
       },
@@ -44,14 +44,6 @@ export class SalesReportPage implements OnInit {
       }
     });
   }
-
-  generateColorArray(num) {
-    this.colorArray = [];
-    for (let i = 0; i < num; i++) {
-      this.colorArray.push('#' + Math.floor(Math.random() * 16777215).toString(16));
-    }
-  }
-
 
   ngOnInit() {
   }

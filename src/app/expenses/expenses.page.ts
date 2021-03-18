@@ -12,7 +12,6 @@ export class ExpensesPage implements OnInit {
 
   expenses: Expense[];
   sum: number;
-  amount: number;
 
   constructor(
     private exepnseService: ExpensesService,
@@ -21,7 +20,6 @@ export class ExpensesPage implements OnInit {
   ngOnInit() {
     this.expenses = this.exepnseService.getExpenses();
     this.sum = this.exepnseService.getSumofAll();
-    this.amount = 0;
   }
 
   
@@ -46,6 +44,12 @@ export class ExpensesPage implements OnInit {
           id: 'dueDate',
           type: 'date',
           placeholder: 'לתאריך'
+        },
+        {
+          name:'type',
+          id:'type',
+          type: 'text',
+          placeholder:'סוג'
         }
       ],
       buttons: [
@@ -59,8 +63,10 @@ export class ExpensesPage implements OnInit {
         }, {
           text: 'אשר',
           handler: data=>{
-            this.expenses.push(new Expense(data.nameFor, data.amount, data.dueDate));
-            this.exepnseService.expensesArr.push(new Expense(data.nameFor, data.amount, data.dueDate));
+            if(!data.amount)
+              data.amount = 0;
+            this.expenses.push(new Expense(data.nameFor, data.amount, data.dueDate, data.type));
+            this.exepnseService.expensesArr.push(new Expense(data.nameFor, data.amount, data.dueDate, data.type));
             this.exepnseService.addSum(parseInt(data.amount));
             this.sumExpenses();
           }
