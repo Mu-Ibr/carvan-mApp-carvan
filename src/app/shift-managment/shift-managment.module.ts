@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -10,6 +9,12 @@ import { ShiftManagmentPageRoutingModule } from './shift-managment-routing.modul
 import { ShiftManagmentPage } from './shift-managment.page';
 
 import { CalendarModule } from 'ion2-calendar';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MbscModule } from '@mobiscroll/angular';
+
+
+export class AppModule { }
 
 @NgModule({
   imports: [
@@ -17,9 +22,16 @@ import { CalendarModule } from 'ion2-calendar';
     FormsModule,
     IonicModule,
     ShiftManagmentPageRoutingModule,
-    CalendarModule
+    CalendarModule,
+    MbscModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientJsonpModule
   ],
   declarations: [ShiftManagmentPage],
-  providers: [{ provide: LOCALE_ID, useValue: 'zh-CN' }]
+  providers: [{ provide: LOCALE_ID, useValue: 'zh-CN' }],
+  bootstrap: [ShiftManagmentPage]
+  
 })
 export class ShiftManagmentPageModule {}

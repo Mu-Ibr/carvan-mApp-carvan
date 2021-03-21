@@ -5,28 +5,39 @@ import { Worker } from './Worker.model';
   providedIn: 'root'
 })
 export class WorkersService {
-  private _workers: Worker[] = [
+  public workers: Worker[] = [
     {
       id:'r1',
       name: 'מוחמד איברהים',
       imageUrl: 'https://avatars0.githubusercontent.com/u/35499309?s=400&u=2a9f6da2bf22666f2b60ec781c5d02c70beb2213&v=4',
-      type: 'מנהל'
+      type: 'מנהל',
+      hireYear: 2002,
+      phone: '0508783678',
+      address: 'abu gosh'
     }
   ]
 
   constructor() {}
 
-  get workers(){
-    return[...this._workers];
-  }
 
   getAllWorkers(){
-    return [...this._workers];
+    return [...this.workers];
+  }
+
+  addWorker(worker:Worker){
+    this.workers.push(worker);
+  }
+
+  removeWorker(worker: Worker){
+    let index = this.workers.indexOf(worker);
+    if(index > -1){
+      this.workers.splice(index, 1);
+    }
   }
 
   getWorker(workerId: string){
     return {
-      ...this._workers.find(work=>{
+      ...this.workers.find(work=>{
         return work.id === workerId;
       })
     }

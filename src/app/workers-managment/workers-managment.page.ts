@@ -21,7 +21,7 @@ export class WorkersManagmentPage implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.workers = this.workerService.workers;
+    this.workers = this.workerService.getAllWorkers();
   }
   
   async addNewWorker() {
@@ -51,6 +51,24 @@ export class WorkersManagmentPage implements OnInit {
           id: 'type',
           type: 'text',
           placeholder: 'תחום'
+        },
+        {
+          name: 'hireYear',
+          id: 'hireYear',
+          type: 'number',
+          placeholder: 'שנת התחלה'
+        },
+        {
+          name: 'phone',
+          id: 'phone',
+          type: 'text',
+          placeholder: 'מספר טלפון'
+        },
+        {
+          name: 'address',
+          id: 'address',
+          type: 'text',
+          placeholder: 'מגורים'
         }
       ],
       buttons: [
@@ -64,7 +82,8 @@ export class WorkersManagmentPage implements OnInit {
         }, {
           text: 'אשר',
           handler: data=>{
-            this.workers.push(new Worker(data.name, data.id, data.image, data.type));
+            this.workers.push(new Worker(data.name, data.id, data.image, data.type, data.hireYear, data.phone, data.address));
+            this.workerService.addWorker(new Worker(data.name, data.id, data.image, data.type, data.hireYear, data.phone, data.address));
           }
         }
       ]
@@ -73,9 +92,7 @@ export class WorkersManagmentPage implements OnInit {
   }
 
   removeWorker(worker){
-    let index = this.workers.indexOf(worker);
-    if(index > -1){
-      this.workers.splice(index, 1);
-    }
+   this.workerService.removeWorker(worker);
+   this.workers = this.workerService.getAllWorkers();
   }
 }
