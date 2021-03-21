@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { OrderWaiterPageModule } from './order-waiter/order-waiter.module';
 
 import { WaiterPage } from './waiter.page';
 

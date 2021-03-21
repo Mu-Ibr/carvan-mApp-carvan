@@ -3,5 +3,6 @@ export class Table{
         public num: number,
         public name: string,
         public isTaken: boolean,
+        public ordered: string[]
     ){}
 }

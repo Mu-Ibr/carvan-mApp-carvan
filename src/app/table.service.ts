@@ -7,8 +7,8 @@ import { Table } from './Table.model';
 export class TableService {
   private _tables: Table[] = []
 
-  addTable(num:number, name:string, isTaken:boolean){
-    this._tables.push(new Table(num,name,isTaken));
+  addTable(num:number, name:string, isTaken:boolean, ordered: string[]){
+    this._tables.push(new Table(num,name,isTaken,ordered));
   }
 
   constructor() { }

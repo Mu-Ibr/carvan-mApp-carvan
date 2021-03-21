@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>הזמנות</ion-title>
+    <ion-title>הזמנת שולחן # {{tableNum}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -33,7 +33,7 @@
   </ion-tabs>
   </div>
   <div id='split right'>
-    <ion-button id='sum'(click)='PrintOrder()'>פרטי ההזמנה</ion-button>
+    <ion-button id='sum'(click)='printOrder()'>פרטי ההזמנה</ion-button>
     <ion-button id='submit'(click)='submitOrder()'>שלח הזמנה</ion-button>
   </div>
 </ion-content>

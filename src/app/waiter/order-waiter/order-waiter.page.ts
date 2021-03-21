@@ -4,6 +4,7 @@ import { OrderService } from 'src/app/order.service';
 import { TableService } from 'src/app/table.service';
 import { Table } from 'src/app/Table.model'
 import { Order } from 'src/app/Order.model';
+import { Router, ParamMap } from '@angular/router';
 
 
 
@@ -16,9 +17,10 @@ export class OrderWaiterPage implements OnInit {
 
   private menu: String[];
   tables: Table[];
-  table: Table;
-  orders: Order[];
-  order: Order;
+  orders: string[];
+  ordered: Order[];
+  totalSum: number;
+  tableNum: any;
 
   constructor(
     private route: ActivatedRoute, 
@@ -26,14 +28,31 @@ export class OrderWaiterPage implements OnInit {
     private orderservice: OrderService) { }
 
   ngOnInit() {
+    this.tableNum = this.route.snapshot.queryParamMap.get('id')||0;;
+    this.ordered = this.orderservice.getOrders();
+    this.totalSum = 0;
+    console.log(this.tableNum);
   }  
 
-  printOrder(){
-    
+  printOrder(tableNum: number){
+    for(const table of this.tables){
+      if(table.num == tableNum){
+        this.orders = table.ordered;
+        break;
+      }
+    }
   }
 
-  submitOrder(){
-    
+  submitOrder(tableNum: number){
+    var tab;
+    for(const table of this.tables){
+      if(table.num == tableNum){
+        tab = table;
+        break;
+      }
+    }
+    this.orderservice.addOrder(tab,this.totalSum,this.orders);
+    this.ordered = this.orderservice.getOrders();
   }
 
 }

@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Query } from '@angular/core';
 import { Table } from '../Table.model';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { TableService } from '../table.service';
 import { Order } from '../Order.model';
 import { OrderService } from '../order.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
 
 @Component({
   selector: 'app-waiter',
@@ -18,6 +20,7 @@ export class WaiterPage implements OnInit {
   constructor(
     private router: Router,
     public navCtrl: NavController,
+    private route: ActivatedRoute,
     private tableservice: TableService,
     private orderservice: OrderService) { }
 
@@ -25,11 +28,11 @@ export class WaiterPage implements OnInit {
     this.table = this.tableservice.table;
    }
 
-  SelectClicked(tableNum){
-    this.tableN = new Table(tableNum,"waiter",true);
-    this.tableservice.addTable(tableNum,"waiter", true); 
-    this.orderservice.addOrder(this.tableN, 0, []);
-    this.router.navigate(['/order-waiter']);
+  SelectClicked(tabNum){
+    this.tableN = new Table(tabNum,"waiter",true,[]);
+    this.tableservice.addTable(tabNum,"waiter", true,[]); 
+    //this.orderservice.addOrder(this.tableN, 0, []);
+    this.router.navigate(['/order-waiter'], {queryParams: {id: tabNum}});
   }
 
 }
