@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { WaiterMenuItem } from './WaiterMenuItem.model';
+import { Order } from './Order.model';
 
 @Injectable({
   providedIn: 'root'
@@ -68,7 +69,7 @@ export class WaiterMenuService {
     },
   ]
 
-  constructor() { }
+  constructor() {}
 
   get Appetizers(){
     return [...this._appetizers];

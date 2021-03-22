@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <div class='split left'>
+ <!-- <div class='split left'>
   <ion-tabs #myTabs>
     <ion-tab-bar slot = 'top'>
       <ion-tab-button tab="appetizers" routerLink="/waiter/order-waiter/appetizers">
@@ -33,6 +33,19 @@
   </ion-tabs>
   </div>
   <div id='split right'>
+    <ion-button id='sum'(click)='printOrder()'>פרטי ההזמנה</ion-button>
+    <ion-button id='submit'(click)='submitOrder()'>שלח הזמנה</ion-button>
+  </div>-->
+
+  <div class = 'wrapper'>
+  <ion-button class = 'but' (click)='printMenu(appetizers)'>מנות ראשונות</ion-button>
+  <ion-button class = 'but' (click)='printMenu(soupd)'>מרקים</ion-button>
+  <ion-button class = 'but' (click)='printMenu(stuffed)'>ממולאים</ion-button>
+  <ion-button class = 'but' (click)='printMenu(mainMeal)'>מנות עיקריות</ion-button>
+  <ion-button class = 'but' (click)='printMenu(drinks)'>משקאות</ion-button>
+  <ion-button class = 'but' (click)='printMenu(desserts)'>קינוחים</ion-button>
+  </div>
+  <div class = 'ends'>
     <ion-button id='sum'(click)='printOrder()'>פרטי ההזמנה</ion-button>
     <ion-button id='submit'(click)='submitOrder()'>שלח הזמנה</ion-button>
   </div>

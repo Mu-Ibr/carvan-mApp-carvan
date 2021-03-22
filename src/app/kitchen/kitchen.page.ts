@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { TableService } from '../table.service';
+import { Table } from 'src/app/Table.model';
+import { Order } from '../Order.model';
+import { OrderService } from '../order.service';
+
 
 @Component({
   selector: 'app-kitchen',
@@ -7,9 +12,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KitchenPage implements OnInit {
 
-  constructor() { }
+  tables: Table[];
+  orders: Order[];
+  constructor(private tableservice: TableService,
+    private orderservice: OrderService) { }
 
   ngOnInit() {
+    this.tables = this.tableservice.table;
+    this.orders = this.tableservice.getAllOrderedItems();
+  }
+
+  removeItem(tableNum: number){
+    this.tableservice.removeTable(tableNum);
+    this.orders = this.tableservice.getAllOrderedItems();
   }
 
 }

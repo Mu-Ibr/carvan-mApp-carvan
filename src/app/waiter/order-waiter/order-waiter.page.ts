@@ -4,7 +4,11 @@ import { OrderService } from 'src/app/order.service';
 import { TableService } from 'src/app/table.service';
 import { Table } from 'src/app/Table.model'
 import { Order } from 'src/app/Order.model';
-import { Router, ParamMap } from '@angular/router';
+import { WaiterMenuService } from 'src/app/waiter-menu.service';
+import { WaiterMenuItem } from 'src/app/WaiterMenuItem.model';
+import { Toast } from '@capacitor/core';
+import { Notifications } from '@mobiscroll/angular';
+
 
 
 
@@ -19,40 +23,74 @@ export class OrderWaiterPage implements OnInit {
   tables: Table[];
   orders: string[];
   ordered: Order[];
+  table: Table;
   totalSum: number;
   tableNum: any;
+  appetizers: WaiterMenuItem[];
+  soupd: WaiterMenuItem[];
+  stuffed: WaiterMenuItem[];
+  mainMeal: WaiterMenuItem[];
+  drinks: WaiterMenuItem[];
+  desserts: WaiterMenuItem[];
+  menuDiv: any;
+  str: string;
+  orderMessage: string[];
 
   constructor(
     private route: ActivatedRoute, 
     private tableservice: TableService,
-    private orderservice: OrderService) { }
+    private orderservice: OrderService,
+    private waiterMenu: WaiterMenuService,
+    private notify: Notifications) { }
 
   ngOnInit() {
     this.tableNum = this.route.snapshot.queryParamMap.get('id')||0;;
     this.ordered = this.orderservice.getOrders();
-    this.totalSum = 0;
-    console.log(this.tableNum);
+    this.appetizers = this.waiterMenu.Appetizers;
+    this.soupd = this.waiterMenu.Soups;
+    this.stuffed = this.waiterMenu.Stuffed;
+    this.mainMeal = this.waiterMenu.MainMeal;
+    this.drinks = this.waiterMenu.Drinks;
+    this.desserts = this.waiterMenu.Desserts;
+    if(this.tableservice.isTaken(this.tableNum) == true){
+      this.orderMessage = this.tableservice.getOrderedItems(this.tableNum);
+      this.table = this.tableservice.getTableByNumber(this.tableNum);
+    }
+    else
+      this.addTable();
+    this.menuDiv = document.createElement("div");
+    this.menuDiv.id = 'menu';
+    this.menuDiv.setAttribute("style"," display: flex;flex-direction: column;justify-content: center;align-items: center; text-align: center; min-height: 100vh;");
   }  
 
-  printOrder(tableNum: number){
-    for(const table of this.tables){
-      if(table.num == tableNum){
-        this.orders = table.ordered;
-        break;
-      }
-    }
+  addTable(){
+    this.str = "";
+    this.totalSum = 0;
+    this.orderMessage = [];
+    this.tableservice.addTable(this.tableNum, "waiter", true, this.orderMessage);
   }
 
-  submitOrder(tableNum: number){
-    var tab;
-    for(const table of this.tables){
-      if(table.num == tableNum){
-        tab = table;
-        break;
-      }
-    }
-    this.orderservice.addOrder(tab,this.totalSum,this.orders);
-    this.ordered = this.orderservice.getOrders();
+  printOrder(){
   }
 
+  submitOrder(){
+    this.menuDiv.remove();
+    this.notify.toast({
+      message: "ההזמנה נשלחה למטבח"
+    });
+    this.totalOfSum();
+    this.orderservice.addOrder(this.table, this.totalSum, this.orderMessage);
+  }
+
+  totalOfSum(){
+  }
+
+  printMenu(menuItems: WaiterMenuItem[]){
+    this.str = "";
+    for(let menuitem of menuItems){
+      this.str = this.str + "<ion-button>"+menuitem.name+" "+menuitem.price+" "+"</ion-button>"+"\n"
+    }
+    this.menuDiv.innerHTML = this.str;
+    document.body.appendChild(this.menuDiv);
+  }
 }
