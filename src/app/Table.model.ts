@@ -1,8 +1,9 @@
 export class Table{
     constructor(
-        public num: number,
-        public name: string,
+        public tableNum: number,
+        public waiterName: string,
         public isTaken: boolean,
-        public ordered: string[]
+        public orderedItems: string[],
+        public totalSum: number
     ){}
 }

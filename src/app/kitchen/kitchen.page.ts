@@ -18,13 +18,11 @@ export class KitchenPage implements OnInit {
     private orderservice: OrderService) { }
 
   ngOnInit() {
-    this.tables = this.tableservice.table;
-    this.orders = this.tableservice.getAllOrderedItems();
+    this.tables = this.tableservice.getTables();
   }
 
   removeItem(tableNum: number){
     this.tableservice.removeTable(tableNum);
-    this.orders = this.tableservice.getAllOrderedItems();
   }
 
 }

@@ -6,31 +6,29 @@ import { Table } from './Table.model';
   providedIn: 'root'
 })
 export class TableService {
-  private _tables: Table[] = [];
-  private orderedItems: Order[] = [];
+  private tables: Table[] = [];
 
   constructor() {
     for(let i=0; i<25; i++){
-      this._tables.push(new Table(i+1,"",false,null));  
+      this.tables.push(new Table(i+1,"",false,null,0));  
     }
   }
 
-
-  addTable(num:number, name:string, isTaken:boolean, ordered: string[]){
-    for(let table of this._tables){
-      if(table.num == num){
+  addTable(num:number, name:string, isTaken:boolean, ordered: string[], totalSum: number){
+    for(let table of this.tables){
+      if(table.tableNum == num){
         table.isTaken = isTaken;
-        table.name = name;
-        table.ordered = ordered;
-        this.addOrderedItems(num, ordered);
+        table.waiterName = name;
+        table.orderedItems = ordered;
+        table.totalSum = totalSum;
         break;
       }
     }
   }
 
   isTaken(tableNum: number){
-    for(let table of this._tables){
-      if(table.num == tableNum){
+    for(let table of this.tables){
+      if(table.tableNum == tableNum){
         if(table.isTaken == true)
           return true;
       }
@@ -38,13 +36,13 @@ export class TableService {
     return false;
   }
 
-  get table(){
-    return[...this._tables];
+  getTables(){
+    return[...this.tables];
   }
 
   getTableByNumber(tableNum: number){
-    for(let table of this._tables){
-      if(table.num == tableNum){
+    for(let table of this.tables){
+      if(table.tableNum == tableNum){
           return table;
           break;
       }
@@ -52,37 +50,13 @@ export class TableService {
     return null;
   }
   
-  getAllOrderedItems(){
-    let str = [];
-    for(let orders of this.orderedItems){
-      if(orders.orderItem)
-        str.push(orders.orderItem);
-    }
-    return str;
-  }
-
-  getOrderedItems(tableNum: number){
-    for(let order of this.orderedItems){
-      if(order.table.num == tableNum){
-        return order.table.ordered;
-      }
-    }
-  }
-
-  addOrderedItems(tableNum: number, orderItem: string[]){
-    for(let order of this.orderedItems){
-      if(order.table.num == tableNum){
-        order.table.ordered = orderItem;
-      }
-    }
-  }
-
   removeTable(tableNum: number){
-    for(let table of this._tables){
-      if(table.num == tableNum){
+    for(let table of this.tables){
+      if(table.tableNum == tableNum){
         table.isTaken = false;
-        table.name = "";
-        table.ordered = null;
+        table.waiterName = "";
+        table.orderedItems = [];
+        table.totalSum = 0;
         break;
       }
     }

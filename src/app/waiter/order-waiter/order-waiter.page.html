@@ -3,40 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>הזמנת שולחן # {{tableNum}}</ion-title>
+    <ion-title>הזמנת שולחן # {{tableNum}}<ion-button id='remove'(click)='removeTable()'>סגור שולחן</ion-button>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
- <!-- <div class='split left'>
-  <ion-tabs #myTabs>
-    <ion-tab-bar slot = 'top'>
-      <ion-tab-button tab="appetizers" routerLink="/waiter/order-waiter/appetizers">
-        <ion-label>מנות ראשונות</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="soupd" routerLink="/waiter/order-waiter/soupd">
-        <ion-label>מרקים</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="stuffed" routerLink="/waiter/order-waiter/stuffed">
-        <ion-label>ממולאים</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="mainMeal" routerLink="/waiter/order-waiter/main-meal">
-        <ion-label>מנות עיקריות</ion-label>
-      </ion-tab-button>
-    <ion-tab-button tab="drinks" routerLink="/waiter/order-waiter/drinks">
-      <ion-label>משקאות</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="desserts" routerLink="/waiter/order-waiter/desserts">
-      <ion-label>קינוחים</ion-label>
-    </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
-  </div>
-  <div id='split right'>
-    <ion-button id='sum'(click)='printOrder()'>פרטי ההזמנה</ion-button>
-    <ion-button id='submit'(click)='submitOrder()'>שלח הזמנה</ion-button>
-  </div>-->
-
   <div class = 'wrapper'>
   <ion-button class = 'but' (click)='printMenu(appetizers)'>מנות ראשונות</ion-button>
   <ion-button class = 'but' (click)='printMenu(soupd)'>מרקים</ion-button>
@@ -45,6 +17,7 @@
   <ion-button class = 'but' (click)='printMenu(drinks)'>משקאות</ion-button>
   <ion-button class = 'but' (click)='printMenu(desserts)'>קינוחים</ion-button>
   </div>
+  <div id='menu' ></div>
   <div class = 'ends'>
     <ion-button id='sum'(click)='printOrder()'>פרטי ההזמנה</ion-button>
     <ion-button id='submit'(click)='submitOrder()'>שלח הזמנה</ion-button>

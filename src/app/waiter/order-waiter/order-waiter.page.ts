@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from 'src/app/order.service';
 import { TableService } from 'src/app/table.service';
 import { Table } from 'src/app/Table.model'
@@ -20,11 +20,8 @@ import { Notifications } from '@mobiscroll/angular';
 export class OrderWaiterPage implements OnInit {
 
   private menu: String[];
-  tables: Table[];
-  orders: string[];
   ordered: Order[];
   table: Table;
-  totalSum: number;
   tableNum: any;
   appetizers: WaiterMenuItem[];
   soupd: WaiterMenuItem[];
@@ -41,7 +38,9 @@ export class OrderWaiterPage implements OnInit {
     private tableservice: TableService,
     private orderservice: OrderService,
     private waiterMenu: WaiterMenuService,
-    private notify: Notifications) { }
+    private notify: Notifications,
+    private router: Router) { }
+    
 
   ngOnInit() {
     this.tableNum = this.route.snapshot.queryParamMap.get('id')||0;;
@@ -52,45 +51,68 @@ export class OrderWaiterPage implements OnInit {
     this.mainMeal = this.waiterMenu.MainMeal;
     this.drinks = this.waiterMenu.Drinks;
     this.desserts = this.waiterMenu.Desserts;
-    if(this.tableservice.isTaken(this.tableNum) == true){
-      this.orderMessage = this.tableservice.getOrderedItems(this.tableNum);
-      this.table = this.tableservice.getTableByNumber(this.tableNum);
-    }
-    else
-      this.addTable();
-    this.menuDiv = document.createElement("div");
-    this.menuDiv.id = 'menu';
+    this.table = this.tableservice.getTableByNumber(this.tableNum);
+    this.table.orderedItems = [];
+    this.orderMessage = this.table.orderedItems;
+    this.menuDiv = document.getElementById("menu");
     this.menuDiv.setAttribute("style"," display: flex;flex-direction: column;justify-content: center;align-items: center; text-align: center; min-height: 100vh;");
   }  
 
-  addTable(){
-    this.str = "";
-    this.totalSum = 0;
-    this.orderMessage = [];
-    this.tableservice.addTable(this.tableNum, "waiter", true, this.orderMessage);
-  }
-
   printOrder(){
+    if(this.table.orderedItems==null)
+      return;
+    this.str = "";
+    for(let item of this.table.orderedItems){
+      this.str = this.str + "<h5>"+item+"</h5>"+"\n";
+    }
+    this.str = this.str + "<h4>סהכ: "+this.table.totalSum+"</h4>";
+    this.menuDiv.innerHTML = this.str;
+    document.body.appendChild(this.menuDiv);
   }
 
   submitOrder(){
     this.menuDiv.remove();
+    this.printMenu;
     this.notify.toast({
       message: "ההזמנה נשלחה למטבח"
     });
-    this.totalOfSum();
-    this.orderservice.addOrder(this.table, this.totalSum, this.orderMessage);
+    this.totalOfSum;
   }
 
   totalOfSum(){
   }
 
+  removeTable(){
+    this.menuDiv.remove();
+    this.tableservice.removeTable(this.tableNum);
+    this.getback();
+  }
+
+  getback(){
+    this.router.navigate(['./waiter']);
+  }
+
   printMenu(menuItems: WaiterMenuItem[]){
-    this.str = "";
-    for(let menuitem of menuItems){
-      this.str = this.str + "<ion-button>"+menuitem.name+" "+menuitem.price+" "+"</ion-button>"+"\n"
+    // this.str = "<div id = 'buttons'>\n";
+    // for(let menuitem of menuItems){
+    //   this.str = this.str + "<ion-button menuitemid='"+menuitem.id+"' (click)='addItem("+menuitem+")'>"+menuitem.name+" "+menuitem.price+" "+"</ion-button>"+"\n";
+    //   document.addEventListener('click', (evt)=> this.addItem(menuitem));  
+    // }
+    // this.str = this.str + "</div>";
+    // this.menuDiv.innerHTML = this.str;
+    // console.log(this.str);
+    // document.body.appendChild(this.menuDiv); 
+    for (let menuitem of menuItems) {
+      const button = document.createElement("button");
+      button.innerText = menuitem.name+" "+menuitem.price;
+      button.addEventListener("click", (evt)=> this.addItem(menuitem));
+      this.menuDiv.appendChild(button);
     }
-    this.menuDiv.innerHTML = this.str;
-    document.body.appendChild(this.menuDiv);
+  }
+
+  addItem(menuitem: WaiterMenuItem){
+     this.table.orderedItems.push(menuitem.name);
+     console.log(menuitem.name + " price: "+ menuitem.price);
+     this.table.totalSum+=menuitem.price;
   }
 }

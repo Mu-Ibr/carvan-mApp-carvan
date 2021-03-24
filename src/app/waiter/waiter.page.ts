@@ -14,24 +14,21 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./waiter.page.scss'],
 })
 export class WaiterPage implements OnInit {
-  table: Table[];
+  tables: Table[];
   tableN: Table;
 
   constructor(
     private router: Router,
     public navCtrl: NavController,
     private route: ActivatedRoute,
-    private tableservice: TableService,
-    private orderservice: OrderService) { }
+    private tableservice: TableService) {}
 
   ngOnInit() {
-    this.table = this.tableservice.table;
+    this.tables = this.tableservice.getTables();
    }
 
   SelectClicked(tabNum){
-    this.tableN = new Table(tabNum,"waiter",true,[]);
-    this.tableservice.addTable(tabNum,"waiter", true,[]); 
-    //this.orderservice.addOrder(this.tableN, 0, []);
+    this.tableservice.addTable(tabNum,"waiter", true,[],0); 
     this.router.navigate(['/order-waiter'], {queryParams: {id: tabNum}});
   }
 

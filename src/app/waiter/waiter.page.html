@@ -12,30 +12,24 @@
   <h3>נא לבחור שולחן</h3>
   </div>
   <div id="tables">
-    <ion-button id='m1' size="large" (click)="SelectClicked(1)"> 1</ion-button>
-    <ion-button id='m2' size="large" (click)="SelectClicked(2)"> 2</ion-button>
-    <ion-button id='m3' size="large" (click)="SelectClicked(3)"> 3</ion-button>
-    <ion-button id='m4' size="large" (click)="SelectClicked(4)"> 4</ion-button>
-    <ion-button id='m5' size="large" (click)="SelectClicked(5)"> 5</ion-button>
-    <ion-button id='m6' size="large" (click)="SelectClicked(6)"> 6</ion-button>
-    <ion-button id='m7' size="large" (click)="SelectClicked(7)"> 7</ion-button>
-    <ion-button id='m8' size="large" (click)="SelectClicked(8)"> 8</ion-button>
-    <ion-button id='m9' size="large" (click)="SelectClicked(9)"> 9</ion-button>
-    <ion-button id='m10' size="large" (click)="SelectClicked(10)">10</ion-button>
-    <ion-button id='m11' size="large" (click)="SelectClicked(11)">11</ion-button>
-    <ion-button id='m12' size="large" (click)="SelectClicked(12)">12</ion-button>
-    <ion-button id='m13' size="large" (click)="SelectClicked(13)">13</ion-button>
-    <ion-button id='m14' size="large" (click)="SelectClicked(14)">14</ion-button>
-    <ion-button id='m15' size="large" (click)="SelectClicked(15)">15</ion-button>
-    <ion-button id='m16' size="large" (click)="SelectClicked(16)">16</ion-button>
-    <ion-button id='m17' size="large" (click)="SelectClicked(17)">17</ion-button>
-    <ion-button id='m18' size="large" (click)="SelectClicked(18)">18</ion-button>
-    <ion-button id='m19' size="large" (click)="SelectClicked(19)">19</ion-button>
-    <ion-button id='m20' size="large" (click)="SelectClicked(20)">20</ion-button>
-    <ion-button id='m21' size="large" (click)="SelectClicked(21)">21</ion-button>
-    <ion-button id='m22' size="large" (click)="SelectClicked(22)">22</ion-button>
-    <ion-button id='m23' size="large" (click)="SelectClicked(23)">23</ion-button>
-    <ion-button id='m24' size="large" (click)="SelectClicked(24)">24</ion-button>
-    <ion-button id='m25' size="large" (click)="SelectClicked(25)">25</ion-button>
+    <ion-list>
+      <ion-button *ngFor="let table of tables">
+        <ion-item (click) = 'SelectClicked(table.tableNum)'>
+        <ion-label>
+          <ng-container *ngIf="table.isTaken; then red else green"></ng-container>
+          <ng-template #green>
+          <div class="isTaken">
+            <h2>{{table.tableNum}}</h2>
+          </div>
+        </ng-template>
+        <ng-template #red>
+        <div class="isNotTaken">  
+          <h2>{{table.tableNum}}</h2>
+        </div>
+        </ng-template>
+        </ion-label>
+        </ion-item>
+      </ion-button>
+    </ion-list>
   </div>
 </ion-content>
