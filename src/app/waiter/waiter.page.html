@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>מלצר</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="headers">
+  <h3>נא לבחור שולחן</h3>
+  </div>
+  <div id="tables">
+    <ion-list>
+      <ion-button *ngFor="let table of tables">
+        <ion-item (click) = 'SelectClicked(table.tableNum)'>
+        <ion-label>
+          <ng-container *ngIf="table.isTaken; then red else green"></ng-container>
+          <ng-template #green>
+          <div class="isTaken">
+            <h2>{{table.tableNum}}</h2>
+          </div>
+        </ng-template>
+        <ng-template #red>
+        <div class="isNotTaken">  
+          <h2>{{table.tableNum}}</h2>
+        </div>
+        </ng-template>
+        </ion-label>
+        </ion-item>
+      </ion-button>
+    </ion-list>
+  </div>
+</ion-content>

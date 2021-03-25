@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>מנהל תפריט ראשי</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div>
+  <ion-button id='niholOvdim' expand="block" [routerLink]="['/workers-managment']">
+    <ion-icon name="calendar-outline" slot="end"></ion-icon>
+    ניהול עובדים
+  </ion-button>
+  <ion-button id='niholKsafim' expand="block" [routerLink]="['/financial-managment']">
+    <ion-icon name="bar-chart-outline" slot="end"></ion-icon>
+     ניהול כספים
+  </ion-button>
+  <ion-button id='niholMilay' expand="block" [routerLink]="['/inventory-managment']">
+    <ion-icon name="cart-outline" slot="end"></ion-icon>    ניהול מלאי
+  </ion-button>
+</div>
+</ion-content>

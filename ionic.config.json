@@ -1,0 +1,8 @@
+{
+  "name": "ion-carvan-mApp",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

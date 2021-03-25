@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>ניהול כספים</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+  <ion-button id='budgetManBut' expand="block" [routerLink]="['/budget-managment']">
+    <ion-icon name="calculator-sharp" slot="end"></ion-icon>  
+     ניהול תקציב
+  </ion-button>
+  <ion-button id='cashFlowBut' expand="block" [routerLink]="['/cash-flow']">
+    <ion-icon name="bar-chart-sharp" slot="end"></ion-icon>
+     תזרים מזומנים
+  </ion-button>
+  <ion-button id='expensesBut' expand="block" [routerLink]="['/expenses']">
+    <ion-icon name="wallet-sharp" slot="end"></ion-icon>
+      הוצאות
+  </ion-button>
+  <ion-button id='salesReportBut' expand="block" [routerLink]="['/sales-report']">
+    <ion-icon name="file-tray-full-sharp" slot="end"></ion-icon> 
+       דוח מכירות
+  </ion-button>
+  </div>
+</ion-content>

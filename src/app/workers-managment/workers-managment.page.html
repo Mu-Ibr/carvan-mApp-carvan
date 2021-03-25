@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>ניהול עובדים</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button id='shiftManagment' [routerLink]="['/shift-managment']">ניהול משמרת</ion-button>
+  <div>
+    <ion-list>
+      <h3>עובדים</h3>
+      <ion-item-sliding *ngFor="let worker of workers">
+        <ion-item>
+        <ion-thumbnail slot = "start">
+          <ion-img [src]="worker.imageUrl"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h2>שם: {{ worker.name }}</h2>
+          <h4>עובד: {{ worker.type }}</h4>
+          <h4>שנת התחלה: {{ worker.hireYear }}</h4>
+          <h4>טלפון: {{ worker.phone }}</h4>
+          <h4>מגורים: {{ worker.address }}</h4>
+        </ion-label>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option (click)="removeWorker(worker)">
+          <ion-icon name="person-remove-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+    <ion-button id='addWorkerList' (click)="addNewWorker()"><ion-icon name="person-add-outline"></ion-icon>הוספת עובד</ion-button>
+  </div>
+</ion-content>

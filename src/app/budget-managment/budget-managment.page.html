@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>ניהול תקציב</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-card>
+      <ion-card-header>
+        <h3>הוצאות</h3>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barChart></canvas>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <h3>הכנסות</h3>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barChart2></canvas>
+      </ion-card-content>
+    </ion-card>
+    <h3 id="exp">סה"כ הוצאות: {{expenses}}</h3>
+    <h3 id="inc">סה"כ הכנסות: {{income}}</h3>
+    <h3>סה"כ רווחים: {{total}}</h3>
+  </div>
+</ion-content>

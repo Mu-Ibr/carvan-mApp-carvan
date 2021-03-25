@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>ניהול משמרת</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--<div class="ion-padding">
+    <ion-calendar [(ngModel)]="dateRange"
+        [options]="optionsRange"
+        [type]="type"
+        [format]="'YYYY-MM-DD'">
+    </ion-calendar>
+  </div>
+  <div id='workerSch'>
+      <ion-item-sliding *ngFor="let worker of workers">
+        <ion-item>
+        <ion-label>
+          <h2>שם: {{ worker.name }}</h2>
+          <h4>עובד: {{ worker.type }}</h4>
+        </ion-label>
+      </ion-item>
+    <ion-item-options>
+      <ion-item-option (click)="addToSchedule(worker)">
+        <ion-icon name="person-add"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+    </ion-item-sliding>
+  </div>-->
+  <div class="md-custom-header">
+    <mbsc-eventcalendar [data]="filteredEvents" [view]="calView" [headerTemplate]="customTemplate">
+        <ng-template #customTemplate>
+            <mbsc-calendar-nav class="md-header-filter-nav"></mbsc-calendar-nav>
+            <mbsc-segmented-group select="multiple" [(ngModel)]="selected" (change)="filter($event)" class="md-header-filter-controls" *ngFor = "let worker of workers">
+              <mbsc-segmented [value]=worker.id>
+                    <span class="md-header-filter-name">{{worker.name}}</span>
+                </mbsc-segmented>
+            </mbsc-segmented-group>
+            <mbsc-calendar-prev class="md-header-filter-prev"></mbsc-calendar-prev>
+            <mbsc-calendar-today class="md-header-filter-today"></mbsc-calendar-today>
+            <mbsc-calendar-next class="md-header-filter-next"></mbsc-calendar-next>
+        </ng-template>
+    </mbsc-eventcalendar>
+</div>
+</ion-content>

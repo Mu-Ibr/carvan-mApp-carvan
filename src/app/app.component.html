@@ -1,0 +1,44 @@
+<ion-app>
+  <ion-menu side = "start">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Caravan</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/manager-menu" button>
+            <ion-icon name="grid-outline" slot="start"></ion-icon>
+            <ion-label>תפריט הראשי</ion-label>
+          </ion-item>
+          </ion-menu-toggle>
+        <ion-menu-toggle>
+        <ion-item lines="none" routerLink="/workers-managment" button>
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          <ion-label>ניהול עובדים</ion-label>
+        </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+      <ion-item lines="none" routerLink="/financial-managment" button>
+        <ion-icon name="bar-chart-outline" slot="start"></ion-icon>
+        <ion-label>ניהול כספים</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+    <ion-menu-toggle>
+      <ion-item lines="none" routerLink="/inventory-managment" button>
+        <ion-icon name="cart-outline" slot="start"></ion-icon>
+        <ion-label>ניהול מלאי</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+      <ion-menu-toggle>
+      <ion-item lines="none" routerLink="/login" (click)="onLogOut()" button>
+        <ion-icon name="exit" slot="start"></ion-icon>
+        <ion-label>התנתק</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+    </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>
