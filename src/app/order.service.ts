@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Order } from './Order.model';
 import { Table } from './Table.model';
+import { WaiterMenuItem } from './WaiterMenuItem.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class OrderService {
     this.totalIncomeOfOrders = 0;
    }
   
-  addOrder(table:Table, totalSum:number, items:string){
+  addOrder(table:Table, totalSum:number, items:String){
     this.order.push(new Order(table,totalSum,items));
     this.sumofOrders(totalSum);
   }

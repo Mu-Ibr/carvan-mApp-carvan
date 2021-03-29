@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Order } from './Order.model';
 import { Table } from './Table.model';
+import { WaiterMenuItem } from './WaiterMenuItem.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class TableService {
     }
   }
 
-  addTable(num:number, name:string, isTaken:boolean, ordered: string[], totalSum: number){
+  addTable(num:number, name:string, isTaken:boolean, ordered: WaiterMenuItem[], totalSum: number){
     for(let table of this.tables){
       if(table.tableNum == num){
         table.isTaken = isTaken;

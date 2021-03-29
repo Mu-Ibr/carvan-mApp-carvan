@@ -29,7 +29,7 @@ export class OrderWaiterPage implements OnInit {
   mainMeal: WaiterMenuItem[];
   drinks: WaiterMenuItem[];
   desserts: WaiterMenuItem[];
-  printorder: String[];
+  printorder: WaiterMenuItem[];
   displayMenu: boolean;
   displayOrder: boolean;
   totalSum: number;
@@ -78,7 +78,11 @@ export class OrderWaiterPage implements OnInit {
       message: "ההזמנה נשלחה למטבח"
     });
     this.totalOfSum;
-    this.orderservice.addOrder(this.tableNum,0,this.table.orderedItems.toString());
+    let str = this.tableNum+" "+this.table.waiterName+"\n";
+    for(let order of this.table.orderedItems){
+          str = str+order.name+"\n";
+        }
+    this.orderservice.addOrder(this.tableNum,0,str);
   }
 
   totalOfSum(){
@@ -100,14 +104,16 @@ export class OrderWaiterPage implements OnInit {
   }
 
   addItem(menuitem: WaiterMenuItem){
-     this.table.orderedItems.push(menuitem.name);
+     this.table.orderedItems.push(menuitem);
      this.table.totalSum+=menuitem.price;
   }
 
-  removeItem(item: string){
+  removeItem(item: WaiterMenuItem){
     let index = this.table.orderedItems.indexOf(item);
+    this.table.totalSum-=item.price;
     if(index > -1){
       this.table.orderedItems.splice(index, 1);
     }
+    this.totalSum = this.table.totalSum;
   }
 }

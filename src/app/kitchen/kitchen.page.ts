@@ -14,6 +14,7 @@ export class KitchenPage implements OnInit {
 
   tables: Table[];
   orderedList: Order[];
+  strOrders: String[];
 
   constructor(private tableservice: TableService,
     private orderservice: OrderService) { }
@@ -32,7 +33,6 @@ export class KitchenPage implements OnInit {
   }
 
   orders(){
-    
   }
 
   // printOrder(tableNum: number, ordered: String[]){

@@ -13,7 +13,7 @@
   </div>
   <div id="tables">
     <ion-list>
-      <ion-button *ngFor="let table of tables">
+      <button *ngFor="let table of tables">
         <ion-item (click) = 'SelectClicked(table.tableNum)'>
         <ion-label>
           <ng-container *ngIf="table.isTaken; then red else green"></ng-container>
@@ -29,7 +29,7 @@
         </ng-template>
         </ion-label>
         </ion-item>
-      </ion-button>
+      </button>
     </ion-list>
   </div>
 </ion-content>
