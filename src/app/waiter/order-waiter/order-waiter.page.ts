@@ -68,12 +68,12 @@ export class OrderWaiterPage implements OnInit {
       return;
     this.printorder = this.table.orderedItems;
     this.totalSum = this.table.totalSum;
-    this.displayMenu = false;
     this.displayOrder = true;
+    this.displayMenu = false;
   }
 
   submitOrder(){
-    this.printOrder;
+    this.printOrder();
     this.notify.toast({
       message: "ההזמנה נשלחה למטבח"
     });
@@ -104,8 +104,16 @@ export class OrderWaiterPage implements OnInit {
   }
 
   addItem(menuitem: WaiterMenuItem){
-     this.table.orderedItems.push(menuitem);
-     this.table.totalSum+=menuitem.price;
+    this.table.orderedItems.push(menuitem);
+    this.table.totalSum+=menuitem.price;
+    if(this.menu == this.appetizers)
+      this.orderservice.addAppetizers();
+    if(this.menu == this.stuffed)
+       this.orderservice.addStuffed();
+    if(this.menu == this.mainMeal)
+      this.orderservice.addMainmeal();
+    else
+      this.orderservice.addOthers();
   }
 
   removeItem(item: WaiterMenuItem){

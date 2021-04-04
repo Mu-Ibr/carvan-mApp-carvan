@@ -11,13 +11,13 @@
   <h5>הזמנות</h5>
   <ion-list>
     <ion-item-sliding *ngFor="let order of orderedList">
-      <ion-card>
       <ion-item>
-        <ion-label> 
-          <h5> {{order.orderItem}}</h5>
-          </ion-label>
-    </ion-item>
-  </ion-card>
+      <ion-card>
+          <ion-card-content>
+            <h5> {{order.orderItem}}</h5>
+          </ion-card-content>
+    </ion-card>
+  </ion-item>
     <ion-item-options>
       <ion-item-option (click)="removeItem(order)"><ion-icon name="close-outline"></ion-icon>
       </ion-item-option>

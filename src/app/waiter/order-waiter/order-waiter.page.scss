@@ -6,21 +6,57 @@
   top:0;
 }
 
+#menubuttons{
+  width: 100%;
+  padding-left: 30px;
+}
+
+#appetizers, #soupd, #stuffed, #mainMeal, #drinks, #desserts{
+  border: 2px solid black;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  float: left;
+  margin: 3px;
+  width:70px;
+  height: 40px;
+}
+
 #sum, #submit{
   background-color: white;
   text-decoration: black;
+  border: 1px solid black;
+  height: 30px;
+  margin-left: 23px;
 }
 
-button{
+#itemsMenuButt{
   padding: 10px;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  margin:10px;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: bold;
+  float: left;
+  margin:2px;
+  width: 90px;
+  height: 60px;
 }
 
+#printorder{
+  border-top: 3px solid #bbb;
+  margin-top: 10px;
+  text-align: right;
+}
 
-button:active {
+h4{
+  text-align: right;
+}
+
+#menu{
+  border-top: 3px solid #bbb;
+  margin-top: 10px;
+}
+
+#itemsMenuButt:active, #appetizers:active, #soupd:active, #stuffed:active, #mainMeal:active, #drinks:active, #desserts:active, #sum:active, #submit:active, #remove:active {
   background: #e5e5e5;
   -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
   -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
@@ -28,3 +64,6 @@ button:active {
   outline: none;
 }
 
+#remove{
+  float: right;
+}

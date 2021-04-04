@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../inventory.service';
 import { Inventory } from '../inventory.model';
 import { AlertController } from '@ionic/angular';
+import { ExpensesService } from '../expenses.service';
 
 @Component({
   selector: 'app-inventory-managment',
@@ -13,7 +14,8 @@ export class InventoryManagmentPage implements OnInit {
   sum: number;
   constructor(
     private inventoryService: InventoryService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private expenseService: ExpensesService
     ) { }
 
   ngOnInit() {
@@ -62,6 +64,7 @@ export class InventoryManagmentPage implements OnInit {
             this.inventories.push(new Inventory(data.itemName, data.amount, data.total));
             this.inventoryService.inventories.push(new Inventory(data.itemName, data.amount, data.total));
             this.inventoryService.addSum(parseInt(data.total));
+            this.expenseService.addExpenseMonth(parseInt(data.total));
             this.sumExpenses();        
           }
         }

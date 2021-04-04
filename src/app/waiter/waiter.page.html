@@ -12,24 +12,18 @@
   <h3>נא לבחור שולחן</h3>
   </div>
   <div id="tables">
-    <ion-list>
-      <button *ngFor="let table of tables">
-        <ion-item (click) = 'SelectClicked(table.tableNum)'>
-        <ion-label>
+      <div *ngFor="let table of tables">
           <ng-container *ngIf="table.isTaken; then red else green"></ng-container>
           <ng-template #green>
           <div class="isTaken">
-            <h2>{{table.tableNum}}</h2>
+            <button (click) = 'SelectClicked(table)'>{{table.tableNum}}</button>
           </div>
         </ng-template>
         <ng-template #red>
         <div class="isNotTaken">  
-          <h2>{{table.tableNum}}</h2>
+          <button (click) = 'SelectClicked(table)'>{{table.tableNum}}</button>
         </div>
         </ng-template>
-        </ion-label>
-        </ion-item>
-      </button>
-    </ion-list>
+      </div>
   </div>
 </ion-content>

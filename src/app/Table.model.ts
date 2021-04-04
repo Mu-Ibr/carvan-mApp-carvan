@@ -6,6 +6,7 @@ export class Table{
         public waiterName: string,
         public isTaken: boolean,
         public orderedItems: WaiterMenuItem[],
-        public totalSum: number
+        public totalSum: number,
+        public numberOfClients: number
     ){}
 }

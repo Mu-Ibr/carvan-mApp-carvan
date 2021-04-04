@@ -1,25 +1,46 @@
 #tables{
     margin-top: 40px;
     width: 100%;
-    padding: 20px;
-  }
+    padding: 25px;
+
+//   text-align: center;
+//   display: inline-block;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+}
+
+button{
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    float: left;
+    margin: 3px;
+    width:70px;
+    height: 40px;;
+}
 
 #headers{
     border-bottom: 3px solid #bbb;
 }
 
-.isTaken{
-   color: red;
+.isTaken button{
+    background-color: rgb(241, 64, 64);
 }
 
-.isNotTaken{
-    color: green;
+.isNotTaken button{
+    background-color: rgb(153, 245, 153);
 }
+
 h3{
     padding-top: 20px;
     text-align: center;
     font-size: large;
     font-weight: bold;
     font-style:italic;
+    margin: 20px;
 }
 

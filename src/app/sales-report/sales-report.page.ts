@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { ViewChild } from '@angular/core'
+import { TableService } from '../table.service';
+import { OrderService } from '../order.service';
 
 
 @Component({
@@ -14,7 +16,13 @@ export class SalesReportPage implements OnInit {
   @ViewChild('barChart') barChart;
 
   bars: any;
-  constructor() { }
+  income: number;
+  totalOfClientsPerDay: number;
+  averageIncomePerPerson: number;
+  totalofTablesPerDay: number;
+
+  constructor(private tablesService: TableService,
+    private orderService: OrderService) { }
 
   ionViewDidEnter() {
     this.createBarChart();
@@ -46,6 +54,15 @@ export class SalesReportPage implements OnInit {
   }
 
   ngOnInit() {
+    this.income= this.tablesService.getTotalIncomeOfOrders();
+    this.totalOfClientsPerDay= this.tablesService.getNumberOfClinetsPerDay();
+    this.totalofTablesPerDay= this.tablesService.getNumberofTablesPerDay();
+    if(this.totalOfClientsPerDay>0){
+      this.averageIncomePerPerson = (this.income/this.totalOfClientsPerDay);
+    }
+    else{
+      this.averageIncomePerPerson = 0;
+    }
   }
 
 }

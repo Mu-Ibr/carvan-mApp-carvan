@@ -69,6 +69,14 @@ export class ExpensesPage implements OnInit {
             this.exepnseService.expensesArr.push(new Expense(data.nameFor, data.amount, data.dueDate, data.type));
             this.exepnseService.addSum(parseInt(data.amount));
             this.sumExpenses();
+            if(data.type == 'חשמל')
+              this.exepnseService.addElectricity(parseInt(data.amount));
+            if(data.type == 'מים')
+              this.exepnseService.addWater(parseInt(data.amount));
+            if(data.type == 'שכר העובדים')
+              this.exepnseService.addWages(parseInt(data.amount));
+            else
+              this.exepnseService.addOthers(parseInt(data.amount));
           }
         }
       ]
