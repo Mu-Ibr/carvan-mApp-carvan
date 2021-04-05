@@ -9,30 +9,44 @@
 </ion-header>
 
 <ion-content>
-  <ion-item id="ionsel">
-    <ion-label>בחר</ion-label>
-    <ion-select>
-      <ion-select-option value="daily">יומי</ion-select-option>
-      <ion-select-option value="weekly">שבועי</ion-select-option>
-      <ion-select-option value="monthly">חודשי</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <div id='info'>
-  <h3>על המכירות</h3>
-  <h5>סה"כ מכירות בשקלים: {{income}}</h5>
-  <h5>ממוצע ההוצאה לאדם: {{averageIncomePerPerson}}</h5>
-  <h3>על הלקוחות</h3>
-  <h5>סה"כ מספר לקוחות (שולחן): {{totalofTablesPerDay}}</h5>
-  <h5>סה"כ מספר לקוחות (אדם): {{totalOfClientsPerDay}}</h5>
+  <div id='saleDailyOption'>
+    <label for="salesOption">&nbsp;&nbsp; :בחר סוג דוח </label>
+    <select id="salesOption" ng-model="salesOption" (change)="onChange($event.target.value)">
+      <option value="daily" selected>יומי</option>
+      <option value="weekly">שבועי</option>
+      <option value="monthly">חודשי</option>
+    </select>
   </div>
-  <div class="ion-padding">
-    <ion-card>
-      <ion-card-header id='ioncardheader'>
-      הנמכרים 
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #barChart></canvas>
-      </ion-card-content>
-    </ion-card>
+  <div id='info'>
+    <div id='salesHeader'>
+      <h1>דוח מכירות {{salesOptionText}}</h1>
     </div>
+    <h3>על המכירות</h3>
+    <h5>סה"כ מכירות בשקלים: {{income}}</h5>
+    <h5>ממוצע ההוצאה לאדם: {{averageIncomePerPerson}}</h5>
+    <br>
+    <h3>על הלקוחות</h3>
+    <h5>סה"כ מספר לקוחות (שולחן): {{totalofTablesPerDay}}</h5>
+    <h5>סה"כ מספר לקוחות (אדם): {{totalOfClientsPerDay}}</h5>
+  </div>
+<div class="ion-padding">
+  <ion-card>
+    <ion-card-header class='ioncardheader'>
+    הנמכרים 
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barChart></canvas>
+    </ion-card-content>
+  </ion-card>
+  </div>
+<div class="ion-padding">
+  <ion-card>
+    <ion-card-header class='ioncardheader'>
+    סוגי התשלום 
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barChart2></canvas>
+    </ion-card-content>
+  </ion-card>
+  </div>
 </ion-content>

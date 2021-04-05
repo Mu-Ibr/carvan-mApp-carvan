@@ -10,6 +10,9 @@ export class TableService {
   private tables: Table[] = [];
   private numberOfClinetsPerDay: number;
   private numberofTablesPerDay: number;
+  private numberOfCashPayment: number;
+  private numberOfCreditCardPayment: number;
+  private numberOfCoupon: number;
   private totalIncomeOfOrders: number;
 
   constructor() {
@@ -19,6 +22,9 @@ export class TableService {
     this.numberOfClinetsPerDay = 0;
     this.numberofTablesPerDay = 0;
     this.totalIncomeOfOrders = 0;
+    this.numberOfCashPayment = 0;
+    this.numberOfCoupon = 0;
+    this.numberOfCreditCardPayment = 0;
   }
 
   addTable(num:number, name:string, isTaken:boolean, ordered: WaiterMenuItem[], totalSum: number, numberOfClients: number){
@@ -60,6 +66,32 @@ export class TableService {
   getTotalIncomeOfOrders(){
     return this.totalIncomeOfOrders;
   }
+
+  getNumberOfCreditCardPayment(){
+    return this.numberOfCreditCardPayment;
+  }
+
+  getNumberofCoupon(){
+    return this.numberOfCoupon;
+  }
+
+  getNumberOfCashPayment(){
+    return this.numberOfCashPayment;
+  }
+
+  addNumberOfCreditCardPayment(){
+    this.numberOfCreditCardPayment++;
+  }
+
+  addNumberofCoupon(){
+    this.numberOfCoupon++;
+  }
+
+  addNumberOfCashPayment(){
+    this.numberOfCashPayment++;
+  }
+
+
 
   getTableByNumber(tableNum: number){
     for(let table of this.tables){

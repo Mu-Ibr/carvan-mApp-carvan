@@ -8,8 +8,8 @@ import { WaiterMenuService } from 'src/app/waiter-menu.service';
 import { WaiterMenuItem } from 'src/app/WaiterMenuItem.model';
 import { Toast } from '@capacitor/core';
 import { Notifications } from '@mobiscroll/angular';
-
-
+import { AlertController } from '@ionic/angular';
+import * as $ from 'jquery';
 
 
 @Component({
@@ -32,6 +32,8 @@ export class OrderWaiterPage implements OnInit {
   printorder: WaiterMenuItem[];
   displayMenu: boolean;
   displayOrder: boolean;
+  displayOrderMenu: boolean;
+  displayCloseTable: boolean;
   totalSum: number;
 
   constructor(
@@ -40,7 +42,8 @@ export class OrderWaiterPage implements OnInit {
     private orderservice: OrderService,
     private waiterMenu: WaiterMenuService,
     private notify: Notifications,
-    private router: Router) { }
+    private router: Router,
+    private alertController: AlertController) { }
     
 
   ngOnInit() {
@@ -60,6 +63,8 @@ export class OrderWaiterPage implements OnInit {
     this.menu = this.appetizers;
     this.displayMenu = true;
     this.displayOrder = false;
+    this.displayOrderMenu = true;
+    this.displayCloseTable = false;
     this.totalSum = this.table.totalSum;
   }  
 
@@ -78,9 +83,9 @@ export class OrderWaiterPage implements OnInit {
       message: "ההזמנה נשלחה למטבח"
     });
     this.totalOfSum;
-    let str = this.tableNum+" "+this.table.waiterName+"\n";
+    let str = "שולחן מספר "+this.tableNum+"\t"+"מלצר: "+this.table.waiterName+"\n";
     for(let order of this.table.orderedItems){
-          str = str+order.name+"\n";
+          str = str+order.name+" - \n";
         }
     this.orderservice.addOrder(this.tableNum,0,str);
   }
@@ -89,12 +94,31 @@ export class OrderWaiterPage implements OnInit {
   }
 
   removeTable(){
-    this.tableservice.removeTable(this.tableNum);
-    this.getback();
+    this.displayOrderMenu = false;
+    this.displayCloseTable = true;
   }
 
-  getback(){
+  showSelectValue(paymentType){
+  }
+
+  closeAndGetBack(){
+    let val = $("#paymentType :selected").val();
+    if(val == 'cash'){
+      this.tableservice.addNumberOfCashPayment();
+    }
+    else if(val == 'creditCard'){
+      this.tableservice.addNumberOfCreditCardPayment();
+    }
+    else if(val == 'coupon'){
+      this.tableservice.addNumberofCoupon();
+    }
+    this.tableservice.removeTable(this.tableNum);
     this.router.navigate(['./waiter']);
+  }
+
+  cancelClose(){
+    this.displayCloseTable = false;
+    this.displayOrderMenu = true;
   }
 
   printMenu(menuItems: WaiterMenuItem[]){

@@ -22,7 +22,7 @@
   height: 40px;
 }
 
-#sum, #submit{
+#sum, #submit, #submitClose, #cancelClose{
   background-color: white;
   text-decoration: black;
   border: 1px solid black;
@@ -47,8 +47,22 @@
   text-align: right;
 }
 
-h4{
+h4, h3{
   text-align: right;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h3{
+  font-size: medium;
+}
+
+h1{
+  text-align:center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h6{
+  font-size: x-small;
 }
 
 #menu{
@@ -66,4 +80,28 @@ h4{
 
 #remove{
   float: right;
+}
+
+#closeTable{
+  text-align: right;
+}
+
+label{
+  float:right;
+  text-align: right;
+}
+
+select {
+  font-size: .9rem;
+  padding: 2px 5px;
+}
+
+select:focus {
+  border-color: blanchedalmond;
+  background-color: darkgray;
+}
+
+#submitClose, #cancelClose{
+  margin-right: 50px;
+  margin-bottom:50px;
 }

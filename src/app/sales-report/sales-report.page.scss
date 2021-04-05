@@ -5,15 +5,43 @@ h3{
     text-align: center;
     text-decoration: underline;
     font-weight: bold;
+    color: darkslategrey;
 }
 
 #info{
-    background-color: rgba(194, 156, 85, 0.144);
+   // background-color: rgba(194, 156, 85, 0.144);
+   margin: 30px;
 }
 
-#ionsel{
-    margin-left: 80px;
-    margin-right: 80px;
+#saleDailyOption{
+    align-content: center;
+    margin: 30px;
+}
+
+label{
+    float:right;
+    text-align: right;
+  }
+  
+  #salesOption{
+    font-size: .9rem;
+    padding: 2px 5px;
+    margin-left: 135px;
+  }
+  
+  select:focus {
+    border-color: blanchedalmond;
+    background-color: lightsteelblue;
+  }
+  
+
+.ioncardheader{
     text-align: center;
-    background-color: wheat;
+    font-size: large;
+    font-weight: bold;
+}
+
+#salesHeader{
+  text-align: center;
+  border-bottom: 3px solid #bbb;
 }

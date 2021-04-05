@@ -9,12 +9,12 @@
 
 <ion-content>
   <h5>הזמנות</h5>
-  <ion-list>
+  <ion-list id='list'>
     <ion-item-sliding *ngFor="let order of orderedList">
       <ion-item>
       <ion-card>
           <ion-card-content>
-            <h5> {{order.orderItem}}</h5>
+            <h5 id='textOrder'> {{order.orderItem}}</h5>
           </ion-card-content>
     </ion-card>
   </ion-item>

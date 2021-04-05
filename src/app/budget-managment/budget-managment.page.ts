@@ -22,6 +22,7 @@ export class BudgetManagmentPage implements OnInit {
   expenses: number;
   income: number;
   total: number;
+  dialyNeedSum: number;
 
   constructor(
     private inventory: InventoryService,
@@ -93,6 +94,7 @@ export class BudgetManagmentPage implements OnInit {
     this.expenseSum();
     this.incomeSum();
     this.total = this.income - this.expenses;
+    this.dialyNeedSum = this.dailySum();
   }
 
   expenseSum(){
@@ -101,6 +103,10 @@ export class BudgetManagmentPage implements OnInit {
 
   incomeSum(){
     this.income = this.orderIncome.getTotalIncomeOfOrders();
+  }
+
+  dailySum(){
+    return 0;
   }
   
 } 
