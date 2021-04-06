@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Order } from './Order.model';
 import { Table } from './Table.model';
 import { WaiterMenuItem } from './WaiterMenuItem.model';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,13 @@ export class TableService {
   private numberOfCoupon: number;
   private totalIncomeOfOrders: number;
 
-  constructor() {
+  constructor(private http: HttpClient){
+
+  }
+
+  generateTables(){
     for(let i=0; i<28; i++){
-      this.tables.push(new Table(i+1,"",false,null,0,0));  
+      this.tables.push(new Table(i,"",false,null,0,0));  
     }
     this.numberOfClinetsPerDay = 0;
     this.numberofTablesPerDay = 0;
@@ -25,19 +31,15 @@ export class TableService {
     this.numberOfCashPayment = 0;
     this.numberOfCoupon = 0;
     this.numberOfCreditCardPayment = 0;
+    //this.http.post('https://carvan-mapp-default-rtdb.firebaseio.com/tables.json',{...this.tables}).subscribe();
   }
 
   addTable(num:number, name:string, isTaken:boolean, ordered: WaiterMenuItem[], totalSum: number, numberOfClients: number){
-    for(let table of this.tables){
-      if(table.tableNum == num){
-        table.isTaken = isTaken;
-        table.waiterName = name;
-        table.orderedItems = ordered;
-        table.totalSum = totalSum;
-        table.numberOfClients = numberOfClients;
-        break;
-      }
-    }
+    this.tables[num].isTaken = isTaken;
+    this.tables[num].waiterName = name;
+    this.tables[num].orderedItems = ordered;
+    this.tables[num].totalSum = totalSum;
+    this.tables[num].numberOfClients = numberOfClients;
     this.numberofTablesPerDay++;
   }
 

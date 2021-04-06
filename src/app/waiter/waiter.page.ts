@@ -54,7 +54,7 @@ export class WaiterPage implements OnInit {
         }, {
           text: 'אשר',
           handler: data=>{
-            this.tableservice.addTable(table.tableNum,"waiter", true,[],0,data.numberOfClientsPerTable); 
+            this.tableservice.addTable(table.tableNum,"waiter", true,[],0,parseInt(data.numberOfClientsPerTable)); 
             this.router.navigate(['/order-waiter'], {queryParams: {id: table.tableNum}});
           }
         }
