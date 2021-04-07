@@ -40,7 +40,7 @@ export class CashFlowPage implements OnInit {
         datasets: [{
           label: 'תזרים מזומנים ל3 החודשים האחרונים',
           data: [expensesMonthly[((i)%months.length)], expensesMonthly[((i+1)%months.length)], expensesMonthly[((i+2)%months.length)], expensesMonthly[((i+3)%months.length)]],
-          backgroundColor: ['black','grey','blue','orange'], 
+          backgroundColor: ['grey','blue','green','orange'], 
           borderColor: 'white',
           borderWidth: 1
         }]

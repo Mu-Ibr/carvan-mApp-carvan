@@ -1,6 +1,8 @@
-h3{
+h3, h5{
     text-align: center;
     font-weight: bold;
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 #exp{
     color: red;
@@ -12,6 +14,8 @@ h3{
 h4{
     font-weight: bold;  
     text-align: center;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #dailyNeed{
@@ -23,7 +27,23 @@ h4{
     background-color: lightgray;
 }
 
+#body{
+    background-color: #164a4104;
+}
+
 h6{
     font-size: smaller;
     text-align: center;
+}
+
+#sumOfIncomes{
+    color: black;
+}
+
+#titleHeader{
+    text-align: center;
+}
+
+ion-card{
+    background-color: #164a410a;
 }

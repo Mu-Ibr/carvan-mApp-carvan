@@ -6,6 +6,7 @@ import { TableService } from '../table.service';
 import { Order } from '../Order.model';
 import { OrderService } from '../order.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { data } from 'jquery';
 
 
 @Component({
@@ -54,6 +55,9 @@ export class WaiterPage implements OnInit {
         }, {
           text: 'אשר',
           handler: data=>{
+            if(!data.numberOfClientsPerTable){
+              data.numberOfClientsPerTable = 0;
+            }
             this.tableservice.addTable(table.tableNum,"waiter", true,[],0,parseInt(data.numberOfClientsPerTable)); 
             this.router.navigate(['/order-waiter'], {queryParams: {id: table.tableNum}});
           }

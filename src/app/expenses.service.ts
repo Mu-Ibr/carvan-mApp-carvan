@@ -29,9 +29,10 @@ export class ExpensesService {
     }
    }
 
-   getExpenses(){
+  getExpenses(){
     return [...this.expensesArr];
   }
+  
   getExpenseMonthly(){
     return [...this.expenseMonthly];
   }

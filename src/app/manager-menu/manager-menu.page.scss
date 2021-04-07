@@ -6,13 +6,12 @@ button{
     font-size: large;
     border-radius: 8px;
     transition-duration: 0.4s;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 #164a4171, 0 17px 50px 0 #164a413a;
 }
 
 button:hover {
-  background-color: rgb(158, 150, 150); /* Green */
+  background-color: #164a41; 
   color: white;
-
 }
 
 div{
@@ -21,4 +20,8 @@ div{
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 20px;
+}
+
+#titleHeader{
+  text-align: center;
 }

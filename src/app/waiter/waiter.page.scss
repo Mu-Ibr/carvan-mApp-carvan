@@ -1,8 +1,8 @@
 #tables{
-    margin-top: 40px;
     width: 100%;
     padding: 25px;
-
+    background-color: #164a410e;
+    height: 80%;
 //   text-align: center;
 //   display: inline-block;
 //   position: absolute;
@@ -20,7 +20,8 @@ button{
     float: left;
     margin: 3px;
     width:70px;
-    height: 40px;;
+    height: 40px;
+    color: white;
 }
 
 #headers{
@@ -28,19 +29,21 @@ button{
 }
 
 .isTaken button{
-    background-color: rgb(241, 64, 64);
+    background-color: #800000;
 }
 
 .isNotTaken button{
-    background-color: rgb(153, 245, 153);
+    background-color: #39603D;
 }
 
 h3,h5{
-   // padding-top: 20px;
     text-align: center;
     font-weight: bold;
-   // font-style:italic;
     margin: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#titleHeader{
+    text-align: center;
 }
 

@@ -132,9 +132,9 @@ export class OrderWaiterPage implements OnInit {
     this.table.totalSum+=menuitem.price;
     if(this.menu == this.appetizers)
       this.orderservice.addAppetizers();
-    if(this.menu == this.stuffed)
+    else if(this.menu == this.stuffed)
        this.orderservice.addStuffed();
-    if(this.menu == this.mainMeal)
+    else if(this.menu == this.mainMeal)
       this.orderservice.addMainmeal();
     else
       this.orderservice.addOthers();
