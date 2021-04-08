@@ -15,6 +15,7 @@ import { TableService } from '../table.service';
 export class BudgetManagmentPage implements OnInit {
 
   @ViewChild('barChart') barChart;
+  @ViewChild('barChart3') barChart3;
   @ViewChild('barChart2') barChart2;
 
   bars: any;
@@ -23,6 +24,7 @@ export class BudgetManagmentPage implements OnInit {
   income: number;
   total: number;
   dialyNeedSum: number;
+  inventoriesSum: number;
 
   constructor(
     private inventory: InventoryService,
@@ -32,20 +34,21 @@ export class BudgetManagmentPage implements OnInit {
 
   ionViewDidEnter() {
     this.createBarChartExpense();
+    this.createBarChartInventory();
     this.createBarChartIncome();
   }
 
   createBarChartExpense() {
     let wages=this.expenseservice.getWages(), inven=this.inventory.getSumofAll();
-    let electricity=this.expenseservice.getElectricity(), water=this.expenseservice.getWater();
+    let fixedCosts=this.expenseservice.getExpFixedCosts(), loans=this.expenseservice.getLoans();
     let others=this.expenseservice.getOthers();
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'pie',
       data: {
-        labels: ['שכר העובדים', 'מלאי', 'חשמל', 'מים', 'אחר'],
+        labels: ['משכורות', 'מלאי', 'הוצאות קבועות', 'הלוואות', 'אחר'],
         datasets: [{
           label: '',
-          data: [wages, inven, electricity, water, others],
+          data: [wages, inven, fixedCosts, loans, others],
           backgroundColor: ['white','blue','green','orange', 'grey'], 
           borderColor: 'red',
           borderWidth: 1
@@ -90,9 +93,38 @@ export class BudgetManagmentPage implements OnInit {
     });
   }
 
+  createBarChartInventory() {
+    let equipments=this.inventory.getSumOfEquipments(), food=this.inventory.getSumOfFood();
+    let drinks=this.inventory.getSumOfDrinks(), cleaners=this.inventory.getSumOfCleaners();
+    let others=this.inventory.getSumofOthers();
+    this.bars2 = new Chart(this.barChart3.nativeElement, {
+      type: 'pie',
+      data: {
+        labels: ['ציוד', 'מזון', 'משקאות', 'חומרי ניקוי' ,'אחר'],
+        datasets: [{
+          label: '',
+          data: [equipments, food, drinks, cleaners, others],
+          backgroundColor: ['red','orange','green', 'blue' ,'grey'], 
+          borderColor: 'red',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
+
   ngOnInit() {
     this.expenseSum();
     this.incomeSum();
+    this.inventoriesSum = this.inventory.getSumofAll();
     this.total = this.income - this.expenses;
     this.dialyNeedSum = this.dailySum();
   }

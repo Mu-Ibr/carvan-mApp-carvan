@@ -9,25 +9,8 @@ import { Worker } from '../Worker.model'
   styleUrls: ['./shift-managment.page.scss'],
 })
 export class ShiftManagmentPage implements OnInit {
- 
-  dateRange: { from: string; to: string; };
-  type: 'string';
-  workers: Worker[];
-  add_to_schedule :Worker[];
+
+  constructor(){}
   
-  optionsRange: CalendarComponentOptions = {
-    pickMode: 'range'
-  };
-
-  constructor(private workersService: WorkersService) { 
-    this.add_to_schedule = [];
-  }
-  ngOnInit() {
-    this.workers = this.workersService.getAllWorkers();
-  }
-
-  addToSchedule(worker: Worker){
-    this.add_to_schedule.push(worker);
-  }
-
+  ngOnInit() {}
 }

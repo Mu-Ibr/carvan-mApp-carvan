@@ -8,10 +8,14 @@ import { Expense } from './Expense.model';
 })
 export class ExpensesService {
 
-  expensesArr: Expense[] = [];
+  private expensesArr: Expense[] = [];
+  private expFixedCosts: Expense[] = [];
+  private expLoans: Expense[] = [];
+  private expWages: Expense[] = [];
+  private expOthers: Expense[] = [];
   sumofAll: number;
-  private electricity: number;
-  private water: number;
+  private fixedCosts: number;
+  private loans: number;
   private wages: number;
   private others: number;
   private month: number;
@@ -19,8 +23,8 @@ export class ExpensesService {
 
   constructor() {
     this.sumofAll=0;
-    this.electricity = 0;
-    this.water = 0;
+    this.fixedCosts = 0;
+    this.loans = 0;
     this.wages = 0;
     this.others = 0;
     this.month = 0;
@@ -33,6 +37,22 @@ export class ExpensesService {
     return [...this.expensesArr];
   }
   
+  getExpFixedCosts(){
+    return [...this.expFixedCosts];
+  }
+  
+  getExpLoans(){
+    return [...this.expLoans];
+  }
+  
+  getExpWages(){
+    return [...this.expWages];
+  }
+  
+  getExpOthers(){
+    return [...this.expOthers];
+  }
+  
   getExpenseMonthly(){
     return [...this.expenseMonthly];
   }
@@ -41,12 +61,12 @@ export class ExpensesService {
     return this.sumofAll;
   }
 
-  getElectricity(){
-    return this.electricity;
+  getFixedCosts(){
+    return this.fixedCosts;
   }
 
-  getWater(){
-    return this.water;
+  getLoans(){
+    return this.loans;
   }
 
   getWages(){
@@ -61,19 +81,23 @@ export class ExpensesService {
     return this.month;
   }
 
-  addElectricity(sum: number){
-    this.electricity+=sum;
+  addFixedCosts(item, sum: number){
+    this.expFixedCosts.push(item);
+    this.fixedCosts+=sum;
   }
   
-  addWater(sum: number){
-    return this.water+=sum;
+  addLoans(item, sum: number){
+    this.expLoans.push(item);
+    return this.loans+=sum;
   }
 
-  addWages(sum: number){
+  addWages(item, sum: number){
+    this.expWages.push(item);
     return this.wages+=sum;
   }
 
-  addOthers(sum: number){
+  addOthers(item, sum: number){
+    this.expOthers.push(item);
     return this.others+=sum;
   }
 

@@ -9,6 +9,17 @@
 </ion-header>
 
 <ion-content>
+  <div id='expenseAddButtons'>
+    <button id='fixedCosts' (click)="getExpenseList('fixedCosts')">הוצאות קבועות</button>
+    <button id='loans' (click)="getExpenseList('loans')">הלוואות</button>
+    <button id='wages' (click)="getExpenseList('wages')">משכורות</button>
+    <button id='others' (click)="getExpenseList('others')">אחר</button>
+    <h2>
+      <button  id='addNewExpense' (click)="addNewExpense()"><ion-icon name="add-circle-outline"></ion-icon></button>
+      {{listType}}
+    </h2>
+  </div>
+  <div id = 'expenseList'>
   <ion-list>
     <ion-item-sliding *ngFor="let expense of expenses">
       <ion-item>
@@ -30,6 +41,9 @@
     </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <ion-button  id='addNewExpense' (click)="addNewExpense()"><ion-icon name="add-circle-outline"></ion-icon>הוסף</ion-button>
-  <h4>סכום ההוצאות הרשומות להעיל הינו: {{sum}}</h4>
+  </div>
+  <div id='totalSums'>
+  <h4>סכום ההוצאות ל{{listType}}: {{sum}}</h4>
+  <h4>סכום ההוצאות כולל : {{sumofAll}}</h4>
+</div>
 </ion-content>

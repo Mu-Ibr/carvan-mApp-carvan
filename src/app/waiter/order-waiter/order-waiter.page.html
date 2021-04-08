@@ -47,23 +47,29 @@
     </div>
   </div>
 </div>
-<div id='closeTable' *ngIf='displayCloseTable'>
-  <div id='tablePayment'>
+<div id='close' *ngIf='displayCloseTable'>
+  <div id='closeTitle'>
     <h1>סגירת שולחן {{tableNum}}</h1>
-    <label for="paymentType">&nbsp;&nbsp; :בחר סוג תשלום </label>
-    <select id="paymentType" ng-model="paymentType" ng-change="showSelectValue(paymentType)">
-      <option value="cash" selected>מזומן</option>
-      <option value="creditCard">כרטים אשראי</option>
-      <option value="coupon">קופון</option>
-    </select>
-    </div>
-  <br/>
-  <div id='tips'>
-    <label for="tipAmount">&nbsp;&nbsp; :טיפ </label>
-    <input type="number" id='tipAmount' name='tipAmount'>
-    <h6>.המידע על הטיפ הינו מידע פרטי למלצר ואינו מועבר למנהל או גוף אחר</h6>
   </div>
-  <button id='cancelClose' (click)='cancelClose()'>בטל</button>
-  <button id='submitClose' (click)='closeAndGetBack()'>אשר וסגור שולחן</button>
+  <div id='closeTable'>
+    <div id='tablePayment'>
+      <label for="paymentType">&nbsp;&nbsp; :בחר סוג תשלום </label>
+      <select id="paymentType" ng-model="paymentType" ng-change="showSelectValue(paymentType)">
+        <option value="cash" selected>מזומן</option>
+        <option value="creditCard">כרטים אשראי</option>
+        <option value="coupon">קופון</option>
+      </select>
+      </div>
+    <br/>
+    <div id='tips'>
+      <label for="tipAmount">&nbsp;&nbsp; :טיפ </label>
+      <input type="number" id='tipAmount' name='tipAmount'>
+      <h6>.המידע על הטיפ הינו מידע פרטי למלצר ואינו מועבר למנהל או גוף אחר</h6>
+    </div>
+  </div>
+  <div id='closingCancelAndSubmit'>
+    <button id='cancelClose' (click)='cancelClose()'>בטל</button>
+    <button id='submitClose' (click)='closeAndGetBack()'>אשר וסגור שולחן</button>
+  </div>
 </div>
 </ion-content>

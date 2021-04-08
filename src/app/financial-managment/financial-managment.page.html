@@ -9,22 +9,35 @@
 </ion-header>
 
 <ion-content>
-  <div>
-  <ion-button id='budgetManBut' expand="block" [routerLink]="['/budget-managment']">
-    <ion-icon name="calculator-sharp" slot="end"></ion-icon>  
-     ניהול תקציב
-  </ion-button>
-  <ion-button id='cashFlowBut' expand="block" [routerLink]="['/cash-flow']">
-    <ion-icon name="bar-chart-sharp" slot="end"></ion-icon>
-     תזרים מזומנים
-  </ion-button>
-  <ion-button id='expensesBut' expand="block" [routerLink]="['/expenses']">
-    <ion-icon name="wallet-sharp" slot="end"></ion-icon>
-      הוצאות
-  </ion-button>
-  <ion-button id='salesReportBut' expand="block" [routerLink]="['/sales-report']">
-    <ion-icon name="file-tray-full-sharp" slot="end"></ion-icon> 
-       דוח מכירות
-  </ion-button>
+  <div id='top'>
+    <h4>רכיבי ההוצאות לפי ההכנסות החודשי</h4>
+    <h6>משוער בערך לפי הנתונים הנמצאים במערכת</h6>
+    <br>
+  </div>
+  <div id='body'>
+    <ion-card>
+      <h5>מ"עמ:&nbsp;&nbsp; {{taxes}}</h5>
+    </ion-card>
+    <ion-card>
+      <h5>חומרי גלם:&nbsp;&nbsp; {{inventories}}</h5>
+    </ion-card>
+    <ion-card>
+      <h5>משכורת עובדים:&nbsp;&nbsp; {{wages}}</h5>
+    </ion-card>
+    <ion-card>
+      <h5>הוצאות קבועות:&nbsp;&nbsp; {{fixedCosts}}</h5>
+    </ion-card>
+    <ion-card>
+      <h5>פחת/ציוד:&nbsp;&nbsp; {{equipment}}</h5>
+    </ion-card>
+    <ion-card>
+      <h5>עמלות כרטיסי אשראי:&nbsp;&nbsp; {{commissionCreditCard}}</h5>
+    </ion-card>
+    <ion-card>
+      <h5>החזר הלוואה:&nbsp;&nbsp; {{refundLoans}}</h5>
+    </ion-card>
+    <ion-card id='cleanIcome'>
+      <h4>רווח נקי: {{profit}}</h4>
+    </ion-card>
   </div>
 </ion-content>

@@ -44,7 +44,7 @@ export class WorkersManagmentPage implements OnInit {
           name: 'image',
           id: 'image',
           type: 'text',
-          placeholder: 'שנת התחלה'
+          placeholder: 'תמונה'
         },
         {
           name: 'type',

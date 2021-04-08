@@ -17,9 +17,9 @@
     </ion-card>
     </div>
     <div class="ion-padding">
-      <ion-card>
+      <ion-card class='card'>
         <ion-card-header>
-          <h3>הוצאות</h3>
+          <h3>הוצאות כללי</h3>
           <ion-card>
             <h5 id="exp">סה"כ הוצאות: {{expenses}}</h5>
           </ion-card>
@@ -28,7 +28,18 @@
           <canvas #barChart></canvas>
         </ion-card-content>
       </ion-card>
-      <ion-card>
+      <ion-card class='card'>
+        <ion-card-header>
+          <h3>הוצאות מלאי</h3>
+          <ion-card>
+            <h5 id="exp">סה"כ הוצאות מלאי: {{inventoriesSum}}</h5>
+          </ion-card>
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #barChart3></canvas>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class='card'>
         <ion-card-header>
           <h3>הכנסות</h3>
           <ion-card>

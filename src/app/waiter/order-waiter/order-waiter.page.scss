@@ -30,7 +30,7 @@
   height: 40px;
 }
 
-#sum, #submit, #submitClose, #cancelClose{
+#sum, #submit{
   background-color: white;
   text-decoration: black;
   border: 1px solid black;
@@ -99,6 +99,7 @@ h6{
 #closeTable{
   text-align: right;
   margin-right: 15px;
+  margin-top: 70px;
 }
 
 label{
@@ -116,20 +117,24 @@ select:focus {
   background-color: darkgray;
 }
 
-#submitClose, #cancelClose{
-  margin-right: 50px;
-  margin-bottom:50px;
+#cancelClose, #submitClose{
+  color: black;
+  font-weight: bold;
+  width: 50%;
+  display: inline-block;
+  height: 50px;
+  background-color: #164a416b;
 }
 
-#submitClose{
-  background-color: #009900;
-  font-weight: bold;
+#closingCancelAndSubmit{
+  display: inline-block;
+  width: 100%;
+  margin-top: 70px;
 }
 
-#cancelClose{
-  background-color: #990000;
-  color: white;
-  font-weight: bold;
+#closeTitle{
+  border-bottom: 3px solid #bbb;
+  width: 100%;
 }
 
 #appetizers{
