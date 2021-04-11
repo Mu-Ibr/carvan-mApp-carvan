@@ -25,7 +25,7 @@ export class TableService {
   }
 
   generateTables(){
-    for(let i=0; i<28; i++){
+    for(let i=0; i<27; i++){
       this.tables.push(new Table(i,"",false,null,0,0));  
     }
     for(let i=0; i<7; i++){

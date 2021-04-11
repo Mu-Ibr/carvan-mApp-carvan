@@ -17,6 +17,7 @@ import { data } from 'jquery';
 export class WaiterPage implements OnInit {
   tables: Table[];
   tableN: Table;
+  workerName: any;
 
   constructor(
     private router: Router,
@@ -26,6 +27,7 @@ export class WaiterPage implements OnInit {
     private alertController: AlertController) {}
 
   ngOnInit() {
+    this.workerName = this.route.snapshot.queryParamMap.get('id')|| ' ';
     this.tables = this.tableservice.getTables();
    }
 
@@ -58,7 +60,7 @@ export class WaiterPage implements OnInit {
             if(!data.numberOfClientsPerTable){
               data.numberOfClientsPerTable = 0;
             }
-            this.tableservice.addTable(table.tableNum,"waiter", true,[],0,parseInt(data.numberOfClientsPerTable)); 
+            this.tableservice.addTable(table.tableNum, this.workerName, true,[],0,parseInt(data.numberOfClientsPerTable)); 
             this.router.navigate(['/order-waiter'], {queryParams: {id: table.tableNum}});
           }
         }

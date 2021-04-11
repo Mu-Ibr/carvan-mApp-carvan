@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Worker } from './Worker.model';
+import { UsersAuth } from './UsersAuth.model'
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,46 @@ export class WorkersService {
       address: 'abu gosh'
     }
   ]
+
+  private users: UsersAuth[] =[
+    {
+      username: 'muhammadm',
+      password: 'password',
+      type: 'manager',
+      workerName: 'מוחמד',
+    },
+    {
+      username: 'muhammadw',
+      password: 'password',
+      type: 'waiter',
+      workerName: 'מוחמד',
+    },
+    {
+      username: 'muhammadk',
+      password: 'password',
+      type: 'kitchen',
+      workerName: 'מוחמד',
+    },
+    {
+      username: 'lina',
+      password: 'password',
+      type: 'waiter',
+      workerName: 'לינה',
+    },
+    {
+      username: 'wael',
+      password: 'password',
+      type: 'waiter',
+      workerName: 'ואל',
+    },
+    
+    {
+      username: 'wassouf',
+      password: 'password',
+      type: 'waiter',
+      workerName: 'וסוף',
+    },
+  ];
 
   constructor() {}
 
@@ -41,5 +82,27 @@ export class WorkersService {
         return work.id === workerId;
       })
     }
+  }
+
+  addUserAuth(username: string, password: string, name: string, type: string){
+    this.users.push(new UsersAuth(username, password, name, type));
+  }
+
+  getUserAuth(usernmae: string, password: string){
+    for(let users of this.users){
+      if((users.username == usernmae) && (users.password == password)){
+        return users.type;
+      }
+    }
+    return 'invalid';
+  }
+
+  getUserAuthName(usernmae: string, password: string){
+    for(let users of this.users){
+      if((users.username == usernmae) && (users.password == password)){
+        return users.workerName;
+      }
+    }
+    return ' ';
   }
 }

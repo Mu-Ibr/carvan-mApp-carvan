@@ -9,7 +9,7 @@
 
 <ion-content>
   <div id="headers">
-    <h3>מלצר יקר שלום</h3>
+    <h3>{{workerName}}  שלום</h3>
     <h5>אנא בחר שולחן</h5>
   </div>
   <div id="tables">
@@ -17,12 +17,12 @@
           <ng-container *ngIf="table.isTaken; then red else green"></ng-container>
           <ng-template #green>
           <div class="isTaken">
-            <button (click) = 'SelectClicked(table)'>{{table.tableNum}}</button>
+            <button (click) = 'SelectClicked(table)'>{{table.waiterName}}<br>{{table.tableNum}}</button>
           </div>
         </ng-template>
         <ng-template #red>
         <div class="isNotTaken">  
-          <button (click) = 'SelectClicked(table)'>{{table.tableNum}}</button>
+          <button (click) = 'SelectClicked(table)'>{{table.waiterName}}<br>{{table.tableNum}}</button>
         </div>
         </ng-template>
       </div>

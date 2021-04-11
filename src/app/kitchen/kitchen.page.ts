@@ -3,6 +3,7 @@ import { TableService } from '../table.service';
 import { Table } from 'src/app/Table.model';
 import { Order } from '../Order.model';
 import { OrderService } from '../order.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -15,11 +16,14 @@ export class KitchenPage implements OnInit {
   tables: Table[];
   orderedList: Order[];
   strOrders: String[];
+  workerName: any;
 
   constructor(private tableservice: TableService,
-    private orderservice: OrderService) { }
+    private orderservice: OrderService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.workerName = this.route.snapshot.queryParamMap.get('id')|| ' ';
     this.tables = this.tableservice.getTables();
     this.orderedList = this.orderservice.getOrders();
     this.orders();
