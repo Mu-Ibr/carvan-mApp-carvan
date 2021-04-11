@@ -88,17 +88,17 @@ export class ExpensesService {
   
   addLoans(item, sum: number){
     this.expLoans.push(item);
-    return this.loans+=sum;
+    this.loans+=sum;
   }
 
   addWages(item, sum: number){
     this.expWages.push(item);
-    return this.wages+=sum;
+    this.wages+=sum;
   }
 
   addOthers(item, sum: number){
     this.expOthers.push(item);
-    return this.others+=sum;
+    this.others+=sum;
   }
 
   addMonth(){
@@ -113,8 +113,45 @@ export class ExpensesService {
     this.sumofAll = this.sumofAll + amount;
   }
 
-  removeSum(amount){
-    this.sumofAll = this.sumofAll - amount;
+
+  removeSum(total){
+    this.sumofAll = this.sumofAll - total;
+  }
+
+  removeFixdCosts(item){
+    let index = this.expFixedCosts.indexOf(item);
+    if(index > -1){
+      this.removeSum(item.total);
+      this.fixedCosts = this.fixedCosts - item.total;
+      this.expFixedCosts.splice(index, 1);
+    }
+  }
+
+  removeLoans(item){
+    let index = this.expLoans.indexOf(item);
+    if(index > -1){
+      this.removeSum(item.total);
+      this.expLoans.splice(index, 1);
+      this.loans = this.loans - item.total;
+    }
+  }   
+
+  removeWages(item){
+    let index = this.expWages.indexOf(item);
+    if(index > -1){
+      this.removeSum(item.total);
+      this.expWages.splice(index, 1);
+      this.wages = this.wages - item.total;
+    }
+  }
+  
+  removeOthers(item){
+    let index = this.expOthers.indexOf(item);
+    if(index > -1){
+      this.removeSum(item.total);
+      this.expOthers.splice(index, 1);
+      this.others = this.others - item.total;
+    }
   }
   
 }

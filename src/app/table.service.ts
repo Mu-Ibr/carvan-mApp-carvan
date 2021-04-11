@@ -16,6 +16,9 @@ export class TableService {
   private numberOfCreditCardPayment: number;
   private numberOfCoupon: number;
   private totalIncomeOfOrders: number;
+  private incomeWeeklyArr: number[] = [];
+  private day: number;
+  private previousDayIncome: number;
 
   constructor(private http: HttpClient){
 
@@ -25,12 +28,17 @@ export class TableService {
     for(let i=0; i<28; i++){
       this.tables.push(new Table(i,"",false,null,0,0));  
     }
+    for(let i=0; i<7; i++){
+      this.incomeWeeklyArr.push(0);
+    }
     this.numberOfClinetsPerDay = 0;
     this.numberofTablesPerDay = 0;
     this.totalIncomeOfOrders = 0;
     this.numberOfCashPayment = 0;
     this.numberOfCoupon = 0;
     this.numberOfCreditCardPayment = 0;
+    this.day = 0;
+    this.previousDayIncome = 0;
     //this.http.post('https://carvan-mapp-default-rtdb.firebaseio.com/tables.json',{...this.tables}).subscribe();
   }
 
@@ -93,7 +101,13 @@ export class TableService {
     this.numberOfCashPayment++;
   }
 
+  changePreviousDayIncome(income: number){
+    this.previousDayIncome = income;
+  }
 
+  getPreviousDayIncome(){
+    return this.previousDayIncome;
+  }
 
   getTableByNumber(tableNum: number){
     for(let table of this.tables){
@@ -118,5 +132,28 @@ export class TableService {
         break;
       }
     }
+  }
+
+  nextDay(){
+    this.day++;
+    if(this.day > 6){
+      this.day = 0;
+    }
+  }
+
+  getDay(){
+    return this.day;
+  }
+
+  getIncomeWeeklyArr(){
+    return [...this.incomeWeeklyArr];
+  }
+
+  addWeklyIncome(amount: number, day: number){
+    this.incomeWeeklyArr[day] = amount;
+  }
+
+  getDayIncomeOfWeek(day: number){
+    return this.incomeWeeklyArr[day];
   }
 }

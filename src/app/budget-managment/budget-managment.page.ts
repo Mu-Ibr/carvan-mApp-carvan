@@ -23,7 +23,7 @@ export class BudgetManagmentPage implements OnInit {
   expenses: number;
   income: number;
   total: number;
-  dialyNeedSum: number;
+  forecastDailyTotal: number;
   inventoriesSum: number;
 
   constructor(
@@ -126,7 +126,7 @@ export class BudgetManagmentPage implements OnInit {
     this.incomeSum();
     this.inventoriesSum = this.inventory.getSumofAll();
     this.total = this.income - this.expenses;
-    this.dialyNeedSum = this.dailySum();
+    this.forecastDailyTotal = this.dailySum();
   }
 
   expenseSum(){
@@ -138,7 +138,24 @@ export class BudgetManagmentPage implements OnInit {
   }
 
   dailySum(){
-    return 0;
+    let dayIncome = (this.orderIncome.getDayIncomeOfWeek(this.orderIncome.getDay()));
+    let sum = dayIncome + (dayIncome*0.20); 
+    let previousDayIncome = this.orderIncome.getPreviousDayIncome();
+    let sum2 = 0;
+    let average = 0;
+    if(this.orderIncome.getDay() != 0){
+      sum2 = previousDayIncome + (previousDayIncome*0.20);
+      average = (sum+sum2)/2;
+    }
+    else if(this.orderIncome.getDay() == 6){
+      sum2 = previousDayIncome + (previousDayIncome*0.50);
+      sum2 = sum;
+      average = sum2;
+    }
+    else{
+      average = sum;
+    }
+    return average;
   }
   
 } 

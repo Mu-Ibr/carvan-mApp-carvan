@@ -72,7 +72,7 @@ export class ExpensesPage implements OnInit {
             if(!data.amount)
               data.amount = 0;
             this.expenses.push(new Expense(data.nameFor, data.amount, data.dueDate, data.type));
-            this.addToExpenseService(data.nameFor, data.amount, data.dueDate, data.type);
+            this.addToExpenseService(data.nameFor, parseInt(data.amount), data.dueDate, data.type);
             this.exepnseService.addSum(parseInt(data.amount));
             this.sumExpenses();
           }
@@ -127,19 +127,36 @@ export class ExpensesPage implements OnInit {
       this.listType = 'אחר';
     }
   }
-
-  removeItem(item){
+  removeExpense(item){
     let index = this.expenses.indexOf(item);
     if(index > -1){
-      this.exepnseService.removeSum(item.amount);
       this.expenses.splice(index, 1);
-      //this.exepnseService.expensesArr.splice(index, 1);
     }
-    this.sum = this.exepnseService.getSumofAll();
+    this.removeExpenseService(this.expenseType, item);
+    this.sumofAll = this.exepnseService.getSumofAll();
+  }
+
+  removeExpenseService(expense: string, item){
+    if(expense == 'fixedCosts'){
+      this.exepnseService.removeFixdCosts(item);
+      this.sum = this.exepnseService.getFixedCosts();
+    }
+    else if(expense == 'loans'){
+      this.exepnseService.removeLoans(item);
+      this.sum = this.exepnseService.getLoans();
+    }
+    else if(expense == 'wages'){
+      this.exepnseService.removeWages(item);
+      this.sum = this.exepnseService.getWages();
+    }
+    else if(expense == 'others'){
+      this.exepnseService.removeOthers(item);
+      this.sum = this.exepnseService.getOthers();
+    }
   }
   
   sumExpenses(){
-    this.sum = this.exepnseService.getSumofAll();
+    this.sumofAll = this.exepnseService.getSumofAll();
   }
 
 }

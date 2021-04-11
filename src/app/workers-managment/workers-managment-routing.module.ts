@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WorkerProfilePage } from './worker-profile/worker-profile.page';
-
 import { WorkersManagmentPage } from './workers-managment.page';
 
 const routes: Routes = [
@@ -9,10 +7,10 @@ const routes: Routes = [
     path: '',
     component: WorkersManagmentPage
   },
-  {
-    path: ':workerId',
-    component: WorkerProfilePage
-  }
+  // {
+  //   path: ':workerId',
+  //   component: WorkerProfilePage
+  // }
    /* children: [
       {
         path: 'add-worker',

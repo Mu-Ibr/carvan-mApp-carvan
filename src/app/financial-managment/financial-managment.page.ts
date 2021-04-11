@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExpensesService } from '../expenses.service';
 import { TableService } from '../table.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class FinancialManagmentPage implements OnInit {
   refundLoans: number;
   profit: number;
 
-  constructor(private incomes: TableService) { }
+  constructor(private incomes: TableService, private expenseServie: ExpensesService) { }
 
   ngOnInit() {
     this.totalIncome = this.incomes.getTotalIncomeOfOrders();
@@ -36,12 +37,26 @@ export class FinancialManagmentPage implements OnInit {
     income-=this.fixedCosts;
     this.equipment = (income*0.02);
     income-=this.equipment;
-    if(this.incomes.getNumberOfCreditCardPayment() > 0)
+    if(this.incomes.getNumberOfCreditCardPayment() > 0){
       this.commissionCreditCard = ((this.totalIncome/this.incomes.getNumberOfCreditCardPayment())*0.18);
-    else
-    this.commissionCreditCard = 0;
-    this.refundLoans = 0;
+    }
+    else{
+      this.commissionCreditCard = 0;
+    }
+    if(income > 0){
+      this.refundLoans = (this.expenseServie.getLoans()/income);
+    }
+    else{
+      this.refundLoans = 0;
+    }
     this.profit = income;
+
+    this.taxes = Math.round(this.taxes);
+    this.inventories = Math.round(this.inventories);
+    this.fixedCosts = Math.round(this.fixedCosts);
+    this.equipment = Math.round(this.equipment);
+    this.refundLoans = Math.round(this.refundLoans);
+    this.profit = Math.round(this.profit);
   }
   
 }
